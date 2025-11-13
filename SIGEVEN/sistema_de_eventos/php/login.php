@@ -40,11 +40,11 @@ if (empty($username) || empty($password) || empty($tipo_usuario)) {
 function obtener_url_login($tipo) {
     switch($tipo) {
         case 'estudiante':
-            return '../loginEstudiante.html';
+            return '../loginEstudiante.php';
         case 'docente':
-            return '../loginDocente.html';
+            return '../loginDocente.php';
         case 'admin':
-            return '../../sistema_de_eventos_admin/login.html';
+            return '../../sistema_de_eventos_admin/login.php';
         default:
             return '../index.html';
     }

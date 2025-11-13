@@ -7,7 +7,7 @@ iniciar_sesion_segura();
 
 // Verificar que sea una petición POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: ../registro.html');
+    header('Location: ../registro.php');
     exit();
 }
 
@@ -21,21 +21,21 @@ $tipo_usuario = isset($_POST['tipo_usuario']) ? limpiar_dato($conn, $_POST['tipo
 // Validar campos obligatorios
 if (empty($nombre) || empty($correo) || empty($contraseña) || empty($codigo) || empty($tipo_usuario)) {
     $_SESSION['error_registro'] = 'Todos los campos son obligatorios';
-    header('Location: ../registro.html');
+    header('Location: ../registro.php');
     exit();
 }
 
 // Validar formato de correo
 if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
     $_SESSION['error_registro'] = 'El formato del correo electrónico no es válido';
-    header('Location: ../registro.html');
+    header('Location: ../registro.php');
     exit();
 }
 
 // Validar longitud de contraseña
 if (strlen($contraseña) < 6) {
     $_SESSION['error_registro'] = 'La contraseña debe tener al menos 6 caracteres';
-    header('Location: ../registro.html');
+    header('Location: ../registro.php');
     exit();
 }
 
@@ -49,7 +49,7 @@ if ($tipo_usuario === 'estudiante') {
     // Validar formato de código de estudiante (E00000-0)
     if (!preg_match('/^E[0-9]{5}-[0-9]$/', $codigo)) {
         $_SESSION['error_registro'] = 'El formato del código de estudiante debe ser E00000-0';
-        header('Location: ../registro.html');
+        header('Location: ../registro.php');
         exit();
     }
     
@@ -63,7 +63,7 @@ if ($tipo_usuario === 'estudiante') {
         $_SESSION['error_registro'] = 'El código de estudiante o correo ya está registrado';
         $stmt->close();
         $conn->close();
-        header('Location: ../registro.html');
+        header('Location: ../registro.php');
         exit();
     }
     $stmt->close();
@@ -78,7 +78,7 @@ if ($tipo_usuario === 'estudiante') {
     // Validar formato de código de docente (A00000-0)
     if (!preg_match('/^A[0-9]{5}-[0-9]$/', $codigo)) {
         $_SESSION['error_registro'] = 'El formato del código de docente debe ser A00000-0';
-        header('Location: ../registro.html');
+        header('Location: ../registro.php');
         exit();
     }
     
@@ -92,7 +92,7 @@ if ($tipo_usuario === 'estudiante') {
         $_SESSION['error_registro'] = 'El código de docente o correo ya está registrado';
         $stmt->close();
         $conn->close();
-        header('Location: ../registro.html');
+        header('Location: ../registro.php');
         exit();
     }
     $stmt->close();
@@ -105,7 +105,7 @@ if ($tipo_usuario === 'estudiante') {
 } else {
     $_SESSION['error_registro'] = 'Tipo de usuario no válido';
     $conn->close();
-    header('Location: ../registro.html');
+    header('Location: ../registro.php');
     exit();
 }
 
@@ -116,13 +116,13 @@ if ($registro_exitoso) {
     $_SESSION['exito_registro'] = 'Usuario registrado correctamente. Ya puedes iniciar sesión.';
     // Redirigir al login correspondiente
     if ($tipo_usuario === 'estudiante') {
-        header('Location: ../loginEstudiante.html');
+        header('Location: ../loginEstudiante.php');
     } else {
-        header('Location: ../loginDocente.html');
+        header('Location: ../loginDocente.php');
     }
 } else {
     $_SESSION['error_registro'] = 'Error al registrar el usuario. Por favor, intenta nuevamente.';
-    header('Location: ../registro.html');
+    header('Location: ../registro.php');
 }
 exit();
 ?>
