@@ -83,159 +83,81 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de Sesión - SIGEVEN</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        
-        .login-container {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            width: 100%;
-            max-width: 400px;
-            padding: 40px;
-        }
-        
-        .login-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .login-header h1 {
-            color: #333;
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
-        
-        .login-header p {
-            color: #666;
-            font-size: 14px;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            color: #333;
-            font-weight: 500;
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
-        
-        .form-group input {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 5px;
-            font-size: 14px;
-            transition: border-color 0.3s;
-        }
-        
-        .form-group input:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-        
-        .error-message {
-            background: #fee;
-            color: #c33;
-            padding: 12px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            font-size: 14px;
-            border-left: 4px solid #c33;
-        }
-        
-        .btn-login {
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        
-        .btn-login:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-        
-        .btn-login:active {
-            transform: translateY(0);
-        }
-        
-        .login-footer {
-            text-align: center;
-            margin-top: 20px;
-            color: #666;
-            font-size: 12px;
-        }
-    </style>
+    <link rel="stylesheet" href="sistema_de_eventos/css/auth.css">
 </head>
 <body>
-    <div class="login-container">
-        <div class="login-header">
-            <h1>SIGEVEN</h1>
-            <p>Sistema de Gestión de Eventos</p>
+    <a class="skip-link" href="#main">Saltar al contenido</a>
+
+    <header>
+        <div class="header-inner">
+            <img src="sistema_de_eventos/assets/icons/mobile.png" alt="logo" class="logo" />
+            <nav class="main-nav" aria-label="Menú principal">
+                <ul class="main-menu">
+                    <li><a href="sistema_de_eventos/index.html">INICIO</a></li>
+                    <li><a href="#">AYUDA</a></li>
+                    <li><a href="#">CONTACTO</a></li>
+                </ul>
+            </nav>
         </div>
-        
-        <?php if (!empty($error)): ?>
-            <div class="error-message">
-                <?php echo htmlspecialchars($error); ?>
+    </header>
+
+    <main>
+        <div id="main" class="auth-container">
+            <div class="login-form">
+                <div class="form-header">
+                    <h1>SIGEVEN</h1>
+                    <p>Sistema de Gestión de Eventos</p>
+                </div>
+
+                <?php if (!empty($error)): ?>
+                    <div id="mensaje-error" style="display: block; padding: 10px; margin-bottom: 15px; background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; border-radius: 4px;">
+                        <?php echo htmlspecialchars($error); ?>
+                    </div>
+                <?php endif; ?>
+
+                <form method="POST" action="login.php">
+                    <div class="form-group">
+                        <label for="correo">Correo Electrónico</label>
+                        <input 
+                            type="email" 
+                            id="correo" 
+                            name="correo" 
+                            placeholder="ejemplo@est.emi.edu.bo"
+                            required
+                            autocomplete="email"
+                            value="<?php echo isset($_POST['correo']) ? htmlspecialchars($_POST['correo']) : ''; ?>"
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contrasena">Contraseña</label>
+                        <input 
+                            type="password" 
+                            id="contrasena" 
+                            name="contrasena" 
+                            placeholder="Ingrese su contraseña"
+                            required
+                            autocomplete="current-password"
+                        >
+                    </div>
+                    
+                    <button type="submit" class="btn-auth primary-btn">
+                        Iniciar Sesión
+                    </button>
+                </form>
+                
+                <div class="auth-links">
+                    <p>
+                        ¿Necesitas crear una cuenta?
+                        <a href="crear_usuario_demo.php">Regístrate aquí</a>
+                    </p>
+                </div>
             </div>
-        <?php endif; ?>
-        
-        <form method="POST" action="login.php">
-            <div class="form-group">
-                <label for="correo">Correo Electrónico</label>
-                <input 
-                    type="email" 
-                    id="correo" 
-                    name="correo" 
-                    placeholder="ejemplo@est.emi.edu.bo"
-                    required
-                    autocomplete="email"
-                    value="<?php echo isset($_POST['correo']) ? htmlspecialchars($_POST['correo']) : ''; ?>"
-                >
-            </div>
-            
-            <div class="form-group">
-                <label for="contrasena">Contraseña</label>
-                <input 
-                    type="password" 
-                    id="contrasena" 
-                    name="contrasena" 
-                    placeholder="Ingrese su contraseña"
-                    required
-                    autocomplete="current-password"
-                >
-            </div>
-            
-            <button type="submit" class="btn-login">Iniciar Sesión</button>
-        </form>
-        
-        <div class="login-footer">
-            <p>© 2025 Sistema de Gestión de Eventos Universitarios</p>
         </div>
-    </div>
+    </main>
+
+    <footer>
+        <p style="color: #fed600">© 2025 Sistema de Gestión de Eventos Universitarios. Todos los derechos reservados.</p>
+    </footer>
 </body>
 </html>
