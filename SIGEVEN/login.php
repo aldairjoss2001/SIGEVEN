@@ -54,11 +54,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         
                         // Redirigir según el rol
                         if ($rol === 'estudiante') {
-                            header('Location: dashboard_estudiante.php');
+                            header('Location: sistema_de_eventos/PerfilEstudiante.html');
                         } elseif ($rol === 'docente') {
-                            header('Location: dashboard_docente.php');
+                            header('Location: sistema_de_eventos/PerfilDocente.html');
                         } elseif ($rol === 'administrativo') {
-                            header('Location: dashboard_admin.php');
+                            header('Location: sistema_de_eventos_admin/index.html');
                         }
                         exit();
                     }
