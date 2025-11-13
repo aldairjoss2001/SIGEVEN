@@ -3,9 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sistema de Gestión de Eventos - Acceso para alumnos y docentes, información institucional y servicios.">
-    <title>Sistema de Gestión de Eventos</title>
+    <meta name="description" content="SIGEVEN - Sistema de Gestión de Espacios por Eventos. Plataforma institucional para la administración y reserva de espacios universitarios.">
+    <title>Bienvenido a SIGEVEN</title>
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Estilos específicos para la landing page */
+        .landing-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .landing-content h1 {
+            font-size: 3rem;
+            color: var(--azul-institucional);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .landing-content .subtitle {
+            font-size: 1.5rem;
+            color: var(--azul-institucional);
+            font-weight: 600;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .landing-content .description {
+            font-size: 1.15rem;
+            color: #333;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--azul-institucional);
+            color: var(--blanco);
+            border: none;
+            padding: 18px 50px;
+            border-radius: 35px;
+            font-size: 1.25rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(.2,.9,.2,1);
+            box-shadow: 0 10px 25px rgba(22, 62, 140, 0.3);
+            text-decoration: none;
+        }
+
+        .cta-button:hover,
+        .cta-button:focus {
+            background-color: var(--amarillo-institucional);
+            color: var(--azul-institucional);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 35px rgba(22, 62, 140, 0.4);
+        }
+
+        .cta-button:active {
+            transform: translateY(-2px) scale(0.995);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+            text-align: left;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            color: var(--azul-institucional);
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .landing-content h1 {
+                font-size: 2rem;
+            }
+
+            .landing-content .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .landing-content .description {
+                font-size: 1rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <a class="skip-link" href="#main">Saltar al contenido</a>
@@ -81,11 +193,30 @@
 
     <main>
         <div id="main" class="tarjeta">
-            <h1>Bienvenido al Sistema de Gestión de Eventos</h1>
-            <p>Por favor, seleccione una de las siguientes opciones:</p>
-            <div class="btn-row">
-                <button type="button" class="primary-btn" onclick="location.href='loginDocente.html'">Docente</button>
-                <button type="button" class="primary-btn" onclick="location.href='loginEstudiante.html'">Estudiante</button>
+            <div class="landing-content">
+                <h1>Bienvenido a SIGEVEN</h1>
+                <p class="subtitle">Sistema de Gestión de Espacios por Eventos</p>
+                <p class="description">
+                    Plataforma institucional para la administración eficiente de espacios universitarios, 
+                    facilitando la reserva y gestión de eventos académicos, culturales y deportivos en 
+                    nuestra institución.
+                </p>
+                <a href="login.html" class="cta-button">Iniciar Sesión</a>
+                
+                <div class="features">
+                    <div class="feature-card">
+                        <h3>Gestión Eficiente</h3>
+                        <p>Administra y reserva espacios de forma rápida y sencilla.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Disponibilidad en Tiempo Real</h3>
+                        <p>Consulta la disponibilidad de espacios al instante.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Acceso Seguro</h3>
+                        <p>Plataforma segura para docentes y estudiantes.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
