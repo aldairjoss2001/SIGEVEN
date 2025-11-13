@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Panel Administrativo</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-dashboard">
+    <!-- Header -->
+    <header class="admin-header">
+        <div class="admin-header-inner">
+            <div class="admin-brand">
+                <span class="admin-logo-icon">⚙️</span>
+                <h1>Panel Administrativo</h1>
+            </div>
+            
+            <nav class="admin-nav">
+                <a href="index.html" class="nav-link active">📊 Dashboard</a>
+                <a href="gestion-eventos.html" class="nav-link">📋 Gestión de Eventos</a>
+                <a href="login.html" class="nav-link logout">🚪 Salir</a>
+            </nav>
+
+            <div class="admin-user">
+                <span class="user-avatar">👨‍💼</span>
+                <span class="user-name">Admin</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+        <div class="admin-container">
+            <!-- Welcome Section -->
+            <section class="welcome-section">
+                <h2>Bienvenido, Administrador</h2>
+                <p>Resumen general del sistema de eventos universitarios</p>
+            </section>
+
+            <!-- Stats Grid -->
+            <section class="stats-section">
+                <h3>Métricas del Sistema</h3>
+                <div class="stats-grid">
+                    <!-- Eventos Pendientes -->
+                    <div class="stat-card urgent">
+                        <div class="stat-icon">📋</div>
+                        <div class="stat-content">
+                            <span class="stat-number">8</span>
+                            <span class="stat-label">Eventos Pendientes</span>
+                        </div>
+                        <div class="stat-badge">Revisión Requerida</div>
+                    </div>
+
+                    <!-- Eventos Esta Semana -->
+                    <div class="stat-card">
+                        <div class="stat-icon">🗓️</div>
+                        <div class="stat-content">
+                            <span class="stat-number">12</span>
+                            <span class="stat-label">Eventos Esta Semana</span>
+                        </div>
+                    </div>
+
+                    <!-- Espacios Ocupados -->
+                    <div class="stat-card">
+                        <div class="stat-icon">🏢</div>
+                        <div class="stat-content">
+                            <span class="stat-number">15/25</span>
+                            <span class="stat-label">Espacios Ocupados</span>
+                        </div>
+                    </div>
+
+                    <!-- Total Usuarios -->
+                    <div class="stat-card">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-content">
+                            <span class="stat-number">347</span>
+                            <span class="stat-label">Usuarios Activos</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Actions -->
+            <section class="actions-section">
+                <h3>Acciones Rápidas</h3>
+                <div class="actions-grid">
+                    <a href="gestion-eventos.html" class="action-card">
+                        <div class="action-icon">✅</div>
+                        <div class="action-content">
+                            <h4>Revisar Eventos</h4>
+                            <p>Gestionar solicitudes pendientes</p>
+                        </div>
+                        <div class="action-badge">8 nuevos</div>
+                    </a>
+
+                    <a href="#" class="action-card">
+                        <div class="action-icon">🏢</div>
+                        <div class="action-content">
+                            <h4>Espacios</h4>
+                            <p>Gestionar ubicaciones</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="action-card">
+                        <div class="action-icon">📊</div>
+                        <div class="action-content">
+                            <h4>Reportes</h4>
+                            <p>Ver estadísticas del sistema</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="action-card">
+                        <div class="action-icon">⚙️</div>
+                        <div class="action-content">
+                            <h4>Configuración</h4>
+                            <p>Ajustes del sistema</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Recent Activity -->
+            <section class="activity-section">
+                <h3>Actividad Reciente</h3>
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <div class="activity-icon">📝</div>
+                        <div class="activity-content">
+                            <p><strong>Dr. Carlos Mendoza</strong> creó nuevo evento</p>
+                            <span class="activity-time">Hace 15 minutos</span>
+                        </div>
+                        <span class="activity-status pending">Pendiente</span>
+                    </div>
+
+                    <div class="activity-item">
+                        <div class="activity-icon">✅</div>
+                        <div class="activity-content">
+                            <p><strong>Lic. Ana García</strong> - Evento aprobado</p>
+                            <span class="activity-time">Hace 2 horas</span>
+                        </div>
+                        <span class="activity-status approved">Aprobado</span>
+                    </div>
+
+                    <div class="activity-item">
+                        <div class="activity-icon">👥</div>
+                        <div class="activity-content">
+                            <p><strong>25 estudiantes</strong> se inscribieron en CTF</p>
+                            <span class="activity-time">Hace 4 horas</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+</html>

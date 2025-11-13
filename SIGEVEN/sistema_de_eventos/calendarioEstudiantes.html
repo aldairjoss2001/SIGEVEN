@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendario de Eventos - Sistema de Eventos</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/calendario.css" />
+  </head>
+  <body>
+    <!-- Header/Navigation -->
+    <header class="header">
+      <nav class="nav">
+        <div class="nav-brand"><h2>Eventos EMI</h2></div>
+        <div class="nav-search">
+          <input
+            type="text"
+            placeholder="Buscar eventos..."
+            class="search-input"
+          />
+        </div>
+        <div class="nav-icons">
+          <a href="PerfilEstudiante.html" class="nav-icon">VOLVER</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="calendar-container">
+      <!-- Calendar Header -->
+      <section class="calendar-header">
+        <div class="calendar-controls">
+          <button class="btn btn-outline" id="btn-prev-month">‹</button>
+          <h1 class="calendar-title">Octubre 2025</h1>
+          <button class="btn btn-outline" id="btn-next-month">›</button>
+        </div>
+
+          <div class="filter-options">
+            <select class="filter-select">
+              <option value="all">Todos los eventos</option>
+              <option value="academic">Académicos</option>
+              <option value="cultural">Culturales</option>
+              <option value="sports">Deportivos</option>
+              <option value="social">Sociales</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- Calendar Navigation Tabs -->
+      <input type="radio" name="calendar-tab" id="tab-monthly" checked hidden />
+      <input type="radio" name="calendar-tab" id="tab-weekly" hidden />
+      <input type="radio" name="calendar-tab" id="tab-list" hidden />
+      <section class="calendar-tabs">
+        <div class="tabs">
+          <label
+            for="tab-monthly"
+            class="tab"
+            role="tab"
+            aria-controls="monthly-view"
+            >📅 Vista Mensual</label
+          >
+          <label
+            for="tab-weekly"
+            class="tab"
+            role="tab"
+            aria-controls="weekly-view"
+            >📆 Vista Semanal</label
+          >
+          <label for="tab-list" class="tab" role="tab" aria-controls="list-view"
+            >📋 Lista de Eventos</label
+          >
+        </div>
+      </section>
+
+      <!-- Calendar Content Area -->
+      <section class="calendar-content">
+        <!-- ========== VISTA MENSUAL ========== -->
+        <!-- ========== VISTA MENSUAL ========== -->
+        <div class="tab-content" id="monthly-view">
+          <!-- Week Days Header -->
+          <div class="calendar-weekdays">
+            <div class="weekday">Dom</div>
+            <div class="weekday">Lun</div>
+            <div class="weekday">Mar</div>
+            <div class="weekday">Mié</div>
+            <div class="weekday">Jue</div>
+            <div class="weekday">Vie</div>
+            <div class="weekday">Sáb</div>
+          </div>
+
+          <!-- Calendar Grid -->
+          <div class="calendar-grid">
+            <!-- Semana 1 -->
+            <div class="calendar-day other-month">
+              <div class="day-number">29</div>
+              <div class="events-list"></div>
+            </div>
+            <div class="calendar-day other-month">
+              <div class="day-number">30</div>
+              <div class="events-list"></div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">1</div>
+              <div class="events-list">
+                <div class="event-item academic">
+                  <span class="event-time">08:00</span>
+                  <span class="event-title">Inicio Clases</span>
+                </div>
+              </div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">2</div>
+              <div class="events-list"></div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">3</div>
+              <div class="events-list">
+                <div class="event-item cultural">
+                  <span class="event-time">14:00</span>
+                  <span class="event-title">Festival Cultural</span>
+                </div>
+              </div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">4</div>
+              <div class="events-list"></div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">5</div>
+              <div class="events-list">
+                <div class="event-item social">
+                  <span class="event-time">09:00</span>
+                  <span class="event-title">Arborización</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Semana 2 -->
+            <div class="calendar-day">
+              <div class="day-number">6</div>
+              <div class="events-list"></div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">7</div>
+              <div class="events-list">
+                <div class="event-item academic">
+                  <span class="event-time">10:00</span>
+                  <span class="event-title">Seminario</span>
+                </div>
+              </div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">8</div>
+              <div class="events-list"></div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">9</div>
+              <div class="events-list">
+                <div class="event-item sports">
+                  <span class="event-time">16:00</span>
+                  <span class="event-title">Torneo Fútbol</span>
+                </div>
+              </div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">10</div>
+              <div class="events-list">
+                <div class="event-item academic">
+                  <span class="event-time">18:00</span>
+                  <span class="event-title">CTF Día 1</span>
+                </div>
+              </div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">11</div>
+              <div class="events-list">
+                <div class="event-item academic">
+                  <span class="event-time">18:00</span>
+                  <span class="event-title">CTF Día 2</span>
+                </div>
+              </div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">12</div>
+              <div class="events-list">
+                <div class="event-item cultural">
+                  <span class="event-time">19:00</span>
+                  <span class="event-title">Noche Talentos</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Semana 3 -->
+            <div class="calendar-day">
+              <div class="day-number">13</div>
+              <div class="events-list"></div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">14</div>
+              <div class="events-list"></div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">15</div>
+              <div class="events-list">
+                <div class="event-item academic">
+                  <span class="event-time">15:00</span>
+                  <span class="event-title">Charla</span>
+                </div>
+              </div>
+            </div>
+            <div class="calendar-day today">
+              <div class="day-number">16</div>
+              <div class="events-list">
+                <div class="event-item academic">
+                  <span class="event-time">11:00</span>
+                  <span class="event-title">Reunión</span>
+                </div>
+                <div class="event-item sports">
+                  <span class="event-time">17:00</span>
+                  <span class="event-title">Yoga</span>
+                </div>
+              </div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">17</div>
+              <div class="events-list"></div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">18</div>
+              <div class="events-list">
+                <div class="event-item academic">
+                  <span class="event-time">09:00</span>
+                  <span class="event-title">Feria</span>
+                </div>
+              </div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">19</div>
+              <div class="events-list"></div>
+            </div>
+
+            <!-- Semana 4 -->
+            <div class="calendar-day">
+              <div class="day-number">20</div>
+              <div class="events-list">
+                <div class="event-item social">
+                  <span class="event-time">14:00</span>
+                  <span class="event-title">Almuerzo</span>
+                </div>
+              </div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">21</div>
+              <div class="events-list"></div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">22</div>
+              <div class="events-list"></div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">23</div>
+              <div class="events-list"></div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">24</div>
+              <div class="events-list"></div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">25</div>
+              <div class="events-list"></div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">26</div>
+              <div class="events-list"></div>
+            </div>
+
+            <!-- Semana 5 -->
+            <div class="calendar-day">
+              <div class="day-number">27</div>
+              <div class="events-list"></div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">28</div>
+              <div class="events-list"></div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">29</div>
+              <div class="events-list"></div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">30</div>
+              <div class="events-list"></div>
+            </div>
+            <div class="calendar-day">
+              <div class="day-number">31</div>
+              <div class="events-list">
+                <div class="event-item cultural">
+                  <span class="event-time">20:00</span>
+                  <span class="event-title">Halloween</span>
+                </div>
+              </div>
+            </div>
+            <div class="calendar-day other-month">
+              <div class="day-number">1</div>
+              <div class="events-list"></div>
+            </div>
+            <div class="calendar-day other-month">
+              <div class="day-number">2</div>
+              <div class="events-list"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========== VISTA SEMANAL ========== -->
+        <div class="tab-content" id="weekly-view">
+          <div class="week-header">
+            <div class="week-dates">Semana del 14 al 20 de Octubre 2025</div>
+            <div class="week-controls">
+              <button class="btn btn-sm btn-outline">‹ Semana Anterior</button>
+              <button class="btn btn-sm btn-outline">Semana Siguiente ›</button>
+            </div>
+          </div>
+          <div class="weekly-simple-table">
+            <div class="weekly-row weekly-header-row">
+              <div class="weekly-cell">Lun 14</div>
+              <div class="weekly-cell">Mar 15</div>
+              <div class="weekly-cell">Mié 16</div>
+              <div class="weekly-cell">Jue 17</div>
+              <div class="weekly-cell">Vie 18</div>
+              <div class="weekly-cell">Sáb 19</div>
+              <div class="weekly-cell">Dom 20</div>
+            </div>
+            <div class="weekly-row">
+              <div class="weekly-cell">
+                <div class="event-item academic">
+                  <span class="event-time">10:00 - 12:00</span><br />
+                  <span class="event-title">Seminario Investigación</span><br />
+                  <span class="event-location">Auditorio Principal</span>
+                </div>
+              </div>
+              <div class="weekly-cell">
+                <div class="event-item academic">
+                  <span class="event-time">15:00 - 18:00</span><br />
+                  <span class="event-title">Charla Emprendimiento</span><br />
+                  <span class="event-location">Salón de Honor</span>
+                </div>
+              </div>
+              <div class="weekly-cell">
+                <div class="event-item academic">
+                  <span class="event-time">11:00 - 13:00</span><br />
+                  <span class="event-title">Reunión Coordinadores</span><br />
+                  <span class="event-location">Sala B-101</span>
+                </div>
+                <div class="event-item sports">
+                  <span class="event-time">17:00 - 19:00</span><br />
+                  <span class="event-title">Clase Yoga</span><br />
+                  <span class="event-location">Cancha Principal</span>
+                </div>
+              </div>
+              <div class="weekly-cell"></div>
+              <div class="weekly-cell">
+                <div class="event-item academic">
+                  <span class="event-time">09:00 - 11:00</span><br />
+                  <span class="event-title">Feria Vocacional</span><br />
+                  <span class="event-location">Patio Central</span>
+                </div>
+              </div>
+              <div class="weekly-cell"></div>
+              <div class="weekly-cell">
+                <div class="event-item social">
+                  <span class="event-time">14:00 - 17:00</span><br />
+                  <span class="event-title">Almuerzo Aniversario</span><br />
+                  <span class="event-location">Parrillero</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========== VISTA LISTA ========== -->
+        <div class="tab-content" id="list-view">
+          <div class="list-controls">
+            <div class="sort-options">
+              <select class="sort-select">
+                <option value="date">Ordenar por fecha</option>
+                <option value="title">Ordenar por nombre</option>
+                <option value="type">Ordenar por tipo</option>
+              </select>
+            </div>
+            <div class="period-filter">
+              <button class="btn btn-outline active">Próximos</button>
+              <button class="btn btn-outline">Pasados</button>
+              <button class="btn btn-outline">Todos</button>
+            </div>
+          </div>
+
+          <div class="events-list-view">
+            <!-- Event Item: Festival de Música Universitaria (más nuevo) -->
+            <article class="event-list-item upcoming">
+              <div class="event-date">
+                <div class="date-day">15</div>
+                <div class="date-month">NOV</div>
+                <div class="date-year">2025</div>
+              </div>
+              <div class="event-info">
+                <div class="event-category cultural">Cultural</div>
+                <h3 class="event-title">Festival de Música Universitaria</h3>
+                <div class="event-meta">
+                  <span class="event-time">📅 19:00 - 23:00</span>
+                  <span class="event-location">📍 Auditorio Principal</span>
+                  <span class="event-organizer">👤 Departamento Cultural</span>
+                </div>
+                <p class="event-description">
+                  Presentación de bandas y artistas de la comunidad
+                  universitaria.
+                </p>
+              </div>
+              <div class="event-actions">
+                <button class="btn btn-primary">Inscribirse</button>
+                <button class="btn btn-outline">Ver detalles</button>
+              </div>
+            </article>
+
+            <!-- Event Item: VII VERSIÓN CTF EMI 2025 -->
+            <article class="event-list-item upcoming">
+              <div class="event-date">
+                <div class="date-day">10-11</div>
+                <div class="date-month">OCT</div>
+                <div class="date-year">2025</div>
+              </div>
+              <div class="event-info">
+                <div class="event-category academic">Académico</div>
+                <h3 class="event-title">VII VERSIÓN CTF EMI 2025</h3>
+                <div class="event-meta">
+                  <span class="event-time">📅 18:00 - 21:00</span>
+                  <span class="event-location"
+                    >📍 Laboratorios de Computación - Bloque A</span
+                  >
+                  <span class="event-organizer"
+                    >👤 Departamento de Sistemas</span
+                  >
+                </div>
+                <p class="event-description">
+                  Competencia de seguridad informática para estudiantes de
+                  ingeniería de sistemas.
+                </p>
+              </div>
+              <div class="event-actions">
+                <button class="btn btn-primary">Inscribirse</button>
+                <button class="btn btn-outline">Ver detalles</button>
+              </div>
+            </article>
+
+            <!-- Event Item: Campaña de Arborización -->
+            <article class="event-list-item upcoming">
+              <div class="event-date">
+                <div class="date-day">05</div>
+                <div class="date-month">OCT</div>
+                <div class="date-year">2025</div>
+              </div>
+              <div class="event-info">
+                <div class="event-category academic">Académico</div>
+                <h3 class="event-title">Campaña de Arborización</h3>
+                <div class="event-meta">
+                  <span class="event-time">📅 09:00 - 13:00</span>
+                  <span class="event-location">📍 Playón Irpavi</span>
+                  <span class="event-organizer">👤 Dr. Carlos Mendoza</span>
+                </div>
+                <p class="event-description">
+                  Actividad de responsabilidad social universitaria para
+                  contribuir al cuidado del medio ambiente.
+                </p>
+              </div>
+              <div class="event-actions">
+                <button class="btn btn-primary">Inscribirse</button>
+                <button class="btn btn-outline">Ver detalles</button>
+              </div>
+            </article>
+
+            <!-- Event Item: Congreso Interuniversitario DEEPTECH (más antiguo) -->
+            <article class="event-list-item past">
+              <div class="event-date">
+                <div class="date-day">08-09</div>
+                <div class="date-month">SEP</div>
+                <div class="date-year">2025</div>
+              </div>
+              <div class="event-info">
+                <div class="event-category academic">Académico</div>
+                <h3 class="event-title">
+                  Congreso Interuniversitario DEEPTECH
+                </h3>
+                <div class="event-meta">
+                  <span class="event-time">📅 09:00 - 18:00</span>
+                  <span class="event-location">📍 Auditorio EMI, Irpavi</span>
+                  <span class="event-organizer">👤 Facultad de Ingeniería</span>
+                </div>
+                <p class="event-description">
+                  Congreso de tecnología e innovación con ponentes nacionales e
+                  internacionales.
+                </p>
+              </div>
+              <div class="event-actions">
+                <div class="event-status completed">✅ Evento completado</div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p style="color: #fed600">
+        © 2025 Sistema de Gestión de Eventos Universitarios. Todos los derechos
+        reservados.
+      </p>
+    </footer>
+  </body>
+</html>
