@@ -190,6 +190,13 @@ body.admin-dashboard {
     color: white;
     padding: 0.5rem;
     border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-logo-icon.material-symbols-outlined {
+    font-size: 1.75rem;
 }
 
 .admin-brand h1 {
@@ -218,6 +225,10 @@ body.admin-dashboard {
     align-items: center;
     gap: 0.5rem;
     border: 2px solid transparent;
+}
+
+.nav-link .material-symbols-outlined {
+    font-size: 1.25rem;
 }
 
 .nav-link:hover,
@@ -255,7 +266,12 @@ body.admin-dashboard {
 }
 
 .user-avatar {
-    font-size: 1.5rem;
+    font-size: 2rem;
+    color: var(--azul-institucional);
+}
+
+.user-avatar.material-symbols-outlined {
+    font-size: 2.25rem;
 }
 
 .user-name {
@@ -354,10 +370,19 @@ body.admin-dashboard {
     background: rgba(22,62,140,0.1);
     padding: 0.75rem;
     border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--azul-institucional);
+}
+
+.stat-icon .material-symbols-outlined {
+    font-size: 2.5rem;
 }
 
 .stat-card.urgent .stat-icon {
     background: rgba(239,68,68,0.1);
+    color: var(--danger);
 }
 
 .stat-content {
@@ -443,6 +468,14 @@ body.admin-dashboard {
     background: rgba(22,62,140,0.1);
     padding: 0.75rem;
     border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--azul-institucional);
+}
+
+.action-icon .material-symbols-outlined {
+    font-size: 2rem;
 }
 
 .action-content {
@@ -506,6 +539,14 @@ body.admin-dashboard {
     background: rgba(22,62,140,0.1);
     padding: 0.5rem;
     border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--azul-institucional);
+}
+
+.activity-icon .material-symbols-outlined {
+    font-size: 1.5rem;
 }
 
 .activity-content {
