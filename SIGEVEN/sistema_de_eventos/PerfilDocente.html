@@ -6,74 +6,44 @@
     <title>Perfil Docente - Sistema de Eventos</title>
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/PerfilDocente.css" />
-    <!-- Material Icons from Google Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <style>
-      .material-symbols-outlined {
-        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        font-size: inherit;
-      }
-    </style>
+    <!-- Material Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
   </head>
   <body>
-    <!-- Header/Navigation - Facebook Style -->
+    <!-- Header/Navigation -->
     <header class="header">
       <nav class="nav">
-        <div class="nav-left">
-          <div class="nav-brand">
-            <span class="material-symbols-outlined brand-icon">event</span>
-            <h2>Eventos EMI</h2>
-          </div>
-          <div class="nav-search">
-            <span class="material-symbols-outlined search-icon">search</span>
-            <input type="text" placeholder="Buscar eventos..." class="search-input" id="searchInput">
-          </div>
+        <div class="nav-brand"><h2>Eventos EMI</h2></div>
+        <div class="nav-search">
+          <span class="material-symbols-outlined">search</span>
+          <input
+            type="text"
+            placeholder="Buscar eventos..."
+            class="search-input"
+            id="searchInput"
+          />
         </div>
-        
-        <div class="nav-center">
-          <a href="PerfilDocente.html" class="nav-menu-item active" title="Inicio">
+        <div class="nav-icons">
+          <a href="index.html" class="nav-icon">
             <span class="material-symbols-outlined">home</span>
+            INICIO
           </a>
-          <a href="NuevoEvento.html" class="nav-menu-item" title="Crear Evento">
+          <a href="NuevoEvento.html" class="nav-icon">
             <span class="material-symbols-outlined">add_circle</span>
+            NUEVO EVENTO
           </a>
-          <a href="calendarioDocentes.html" class="nav-menu-item" title="Calendario">
+          <a href="Solicitudes.html" class="nav-icon">
+            <span class="material-symbols-outlined">pending_actions</span>
+            SOLICITUDES
+          </a>
+          <a href="calendarioDocentes.html" class="nav-icon">
             <span class="material-symbols-outlined">calendar_month</span>
+            CALENDARIO
           </a>
-          <a href="#estadisticas" class="nav-menu-item" title="Estadísticas">
-            <span class="material-symbols-outlined">analytics</span>
+          <a href="loginDocente.html" class="nav-icon">
+            <span class="material-symbols-outlined">logout</span>
+            SALIR
           </a>
-        </div>
-        
-        <div class="nav-right">
-          <button class="nav-icon-btn" title="Notificaciones">
-            <span class="material-symbols-outlined">notifications</span>
-            <span class="notification-badge">5</span>
-          </button>
-          <button class="nav-icon-btn" title="Mensajes">
-            <span class="material-symbols-outlined">mail</span>
-          </button>
-          <div class="nav-profile-dropdown">
-            <button class="nav-profile-btn">
-              <img src="assets/uploads/avatar-docente.jpeg" alt="Perfil" class="nav-avatar">
-              <span class="material-symbols-outlined">expand_more</span>
-            </button>
-            <div class="dropdown-menu">
-              <a href="#perfil" class="dropdown-item">
-                <span class="material-symbols-outlined">person</span>
-                Mi Perfil
-              </a>
-              <a href="#configuracion" class="dropdown-item">
-                <span class="material-symbols-outlined">settings</span>
-                Configuración
-              </a>
-              <div class="dropdown-divider"></div>
-              <a href="../logout.php" class="dropdown-item logout">
-                <span class="material-symbols-outlined">logout</span>
-                Cerrar Sesión
-              </a>
-            </div>
-          </div>
         </div>
       </nav>
     </header>
@@ -101,7 +71,7 @@
             class="cover-img"
           />
           <button class="edit-cover-btn" onclick="simularEdicion('portada')">
-            ✏️
+            <span class="material-symbols-outlined">edit</span>
           </button>
         </div>
 
@@ -114,7 +84,7 @@
               id="profileImage"
             />
             <button class="edit-photo-btn" onclick="simularEdicion('foto')">
-              📷
+              <span class="material-symbols-outlined">photo_camera</span>
             </button>
           </div>
 
@@ -125,14 +95,17 @@
 
             <div class="profile-stats">
               <div class="stat">
+                <span class="material-symbols-outlined stat-icon">event_available</span>
                 <span class="stat-number" id="eventsCreated">8</span>
                 <span class="stat-label">Eventos creados</span>
               </div>
               <div class="stat">
+                <span class="material-symbols-outlined stat-icon">pending</span>
                 <span class="stat-number" id="eventsOngoing">3</span>
                 <span class="stat-label">En curso</span>
               </div>
               <div class="stat">
+                <span class="material-symbols-outlined stat-icon">group</span>
                 <span class="stat-number" id="totalAttendees">245</span>
                 <span class="stat-label">Total asistentes</span>
               </div>
@@ -144,9 +117,12 @@
               class="btn btn-primary"
               id="btn-nuevo-evento"
               href="NuevoEvento.html"
-              >➕ Nuevo Evento</a
             >
+              <span class="material-symbols-outlined">add_circle</span>
+              Nuevo Evento
+            </a>
             <button class="btn btn-outline" onclick="editarPerfil()">
+              <span class="material-symbols-outlined">edit</span>
               Editar Perfil
             </button>
           </div>
@@ -161,16 +137,14 @@
             class="tab"
             role="tab"
             aria-controls="mis-eventos"
-            >
-            <span class="material-symbols-outlined">event_available</span>
-            Mis Eventos
-          </label>
+            ><span class="material-symbols-outlined">event</span> Mis Eventos</label
+          >
           <label
             for="tab-solicitudes"
             class="tab"
             role="tab"
             aria-controls="solicitudes"
-            >
+          >
             <span class="material-symbols-outlined">pending_actions</span>
             Solicitudes
           </label>
@@ -179,7 +153,7 @@
             class="tab"
             role="tab"
             aria-controls="espacios"
-            >
+          >
             <span class="material-symbols-outlined">meeting_room</span>
             Espacios
           </label>
@@ -188,7 +162,7 @@
             class="tab"
             role="tab"
             aria-controls="estadisticas"
-            >
+          >
             <span class="material-symbols-outlined">analytics</span>
             Estadísticas
           </label>
@@ -610,13 +584,13 @@
                     ? `
                   <button class="btn btn-sm btn-edit" onclick="editarEvento(${
                     event.id
-                  })">✏️ Editar</button>
+                  })"><span class="material-symbols-outlined">edit</span> Editar</button>
                   <button class="btn btn-sm btn-manage" onclick="gestionarEvento(${
                     event.id
-                  })">👥 Gestionar</button>
+                  })"><span class="material-symbols-outlined">group</span> Gestionar</button>
                   ${
                     event.status !== "pending"
-                      ? `<button class="btn btn-sm btn-danger" onclick="eliminarEvento(${event.id})">🗑️ Eliminar</button>`
+                      ? `<button class="btn btn-sm btn-danger" onclick="eliminarEvento(${event.id})">  <span class="material-symbols-outlined">delete</span> Eliminar</button>`
                       : ""
                   }
                 `
@@ -628,8 +602,8 @@
               </div>
             </div>
             <div class="event-meta">
-              <span class="event-date">📅 ${event.date}</span>
-              <span class="event-location">📍 ${event.location}</span>
+              <span class="event-date"><span class="material-symbols-outlined">event</span> ${event.date}</span>
+              <span class="event-location"><span class="material-symbols-outlined">location_on</span> ${event.location}</span>
               <span class="event-status">Estado: <strong>${getStatusText(
                 event.status
               )}</strong></span>
@@ -686,7 +660,7 @@
                   : `
                 <button class="btn btn-primary" onclick="verInscritos(${event.id})">Ver Inscritos</button>
                 <button class="btn btn-outline" onclick="generarReporte(${event.id})">Generar Reporte</button>
-                <button class="btn btn-text" onclick="compartirEvento(${event.id})">📤 Compartir</button>
+                <button class="btn btn-text" onclick="compartirEvento(${event.id})">  <span class="material-symbols-outlined">share</span> Compartir</button>
               `
               }
             </div>
@@ -845,7 +819,7 @@
         mostrarModal(`
         <h3>Gestionar Evento: ${event.title}</h3>
         <div class="management-options">
-          <button class="btn btn-outline btn-block" onclick="verInscritos(${eventId})">👥 Ver Lista de Inscritos</button>
+          <button class="btn btn-outline btn-block" onclick="verInscritos(${eventId})"><span class="material-symbols-outlined">group</span> Ver Lista de Inscritos</button>
           <button class="btn btn-outline btn-block" onclick="enviarRecordatorio(${eventId})">📧 Enviar Recordatorio</button>
           <button class="btn btn-outline btn-block" onclick="gestionarListaEspera(${eventId})">⏳ Gestionar Lista de Espera</button>
         </div>
@@ -975,7 +949,7 @@
 
       function simularEdicion(tipo) {
         if (tipo === "foto") {
-          mostrarNotificacion("📷 Función de edición de foto simulada");
+          mostrarNotificacion("<span class="material-symbols-outlined">photo_camera</span> Función de edición de foto simulada");
         } else if (tipo === "portada") {
           mostrarNotificacion("🎨 Función de edición de portada simulada");
         }
