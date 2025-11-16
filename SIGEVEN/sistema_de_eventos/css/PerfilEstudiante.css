@@ -57,9 +57,19 @@ body {
     flex: 1;
     max-width: 300px;
     min-width: 200px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.nav-search .material-symbols-outlined {
+    position: absolute;
+    left: 10px;
+    color: var(--muted);
+    font-size: 20px;
+    pointer-events: none;
 }
 .nav-search .search-input { 
-    padding: 8px 12px; 
+    padding: 8px 12px 8px 36px; 
     border-radius: 8px; 
     border: 1px solid rgba(0,0,0,0.08); 
     width: 100%;
@@ -78,6 +88,12 @@ body {
     text-decoration: none; 
     font-weight: 700;
     white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.nav-icon .material-symbols-outlined {
+    font-size: 20px;
 }
 .nav-icon:hover, .nav-icon:focus { 
     background: var(--amarillo-institucional); 
@@ -237,7 +253,10 @@ body {
     max-width: 100%;
 }
 .tab { 
-    display: inline-block; 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
     padding: 10px 14px; 
     border-radius: 10px; 
     cursor: pointer; 
@@ -249,6 +268,9 @@ body {
     flex: 1;
     min-width: 120px;
     text-align: center;
+}
+.tab .material-symbols-outlined {
+    font-size: 20px;
 }
 
 /* Tab content management */
@@ -538,4 +560,25 @@ footer {
         padding: 8px 10px;
         font-size: 0.9rem;
     }
+}
+/* Material Icons styling */
+.stat-icon {
+    font-size: 24px;
+    color: var(--azul-institucional);
+    margin-bottom: 4px;
+}
+
+.btn .material-symbols-outlined {
+    font-size: 18px;
+}
+
+.event-meta .material-symbols-outlined {
+    font-size: 16px;
+    vertical-align: middle;
+    margin-right: 4px;
+}
+
+.event-stats .material-symbols-outlined {
+    font-size: 18px;
+    vertical-align: middle;
 }

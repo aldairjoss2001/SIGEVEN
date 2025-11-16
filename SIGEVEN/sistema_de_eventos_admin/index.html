@@ -5,24 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Panel Administrativo</title>
     <link rel="stylesheet" href="admin.css">
+    <!-- Material Icons from Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-size: inherit;
+        }
+    </style>
 </head>
 <body class="admin-dashboard">
     <!-- Header -->
     <header class="admin-header">
         <div class="admin-header-inner">
             <div class="admin-brand">
-                <span class="admin-logo-icon">⚙️</span>
+                <span class="material-symbols-outlined admin-logo-icon">settings</span>
                 <h1>Panel Administrativo</h1>
             </div>
             
             <nav class="admin-nav">
-                <a href="index.html" class="nav-link active">📊 Dashboard</a>
-                <a href="gestion-eventos.html" class="nav-link">📋 Gestión de Eventos</a>
-                <a href="login.html" class="nav-link logout">🚪 Salir</a>
+                <a href="index.html" class="nav-link active">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    Dashboard
+                </a>
+                <a href="gestion-eventos.html" class="nav-link">
+                    <span class="material-symbols-outlined">event_note</span>
+                    Gestión de Eventos
+                </a>
+                <a href="login.html" class="nav-link logout">
+                    <span class="material-symbols-outlined">logout</span>
+                    Salir
+                </a>
             </nav>
 
             <div class="admin-user">
-                <span class="user-avatar">👨‍💼</span>
+                <span class="material-symbols-outlined user-avatar">account_circle</span>
                 <span class="user-name">Admin</span>
             </div>
         </div>
@@ -43,7 +60,9 @@
                 <div class="stats-grid">
                     <!-- Eventos Pendientes -->
                     <div class="stat-card urgent">
-                        <div class="stat-icon">📋</div>
+                        <div class="stat-icon">
+                            <span class="material-symbols-outlined">pending_actions</span>
+                        </div>
                         <div class="stat-content">
                             <span class="stat-number">8</span>
                             <span class="stat-label">Eventos Pendientes</span>
@@ -53,7 +72,9 @@
 
                     <!-- Eventos Esta Semana -->
                     <div class="stat-card">
-                        <div class="stat-icon">🗓️</div>
+                        <div class="stat-icon">
+                            <span class="material-symbols-outlined">calendar_month</span>
+                        </div>
                         <div class="stat-content">
                             <span class="stat-number">12</span>
                             <span class="stat-label">Eventos Esta Semana</span>
@@ -62,7 +83,9 @@
 
                     <!-- Espacios Ocupados -->
                     <div class="stat-card">
-                        <div class="stat-icon">🏢</div>
+                        <div class="stat-icon">
+                            <span class="material-symbols-outlined">meeting_room</span>
+                        </div>
                         <div class="stat-content">
                             <span class="stat-number">15/25</span>
                             <span class="stat-label">Espacios Ocupados</span>
@@ -71,7 +94,9 @@
 
                     <!-- Total Usuarios -->
                     <div class="stat-card">
-                        <div class="stat-icon">👥</div>
+                        <div class="stat-icon">
+                            <span class="material-symbols-outlined">groups</span>
+                        </div>
                         <div class="stat-content">
                             <span class="stat-number">347</span>
                             <span class="stat-label">Usuarios Activos</span>
@@ -85,7 +110,9 @@
                 <h3>Acciones Rápidas</h3>
                 <div class="actions-grid">
                     <a href="gestion-eventos.html" class="action-card">
-                        <div class="action-icon">✅</div>
+                        <div class="action-icon">
+                            <span class="material-symbols-outlined">check_circle</span>
+                        </div>
                         <div class="action-content">
                             <h4>Revisar Eventos</h4>
                             <p>Gestionar solicitudes pendientes</p>
@@ -94,7 +121,9 @@
                     </a>
 
                     <a href="#" class="action-card">
-                        <div class="action-icon">🏢</div>
+                        <div class="action-icon">
+                            <span class="material-symbols-outlined">location_on</span>
+                        </div>
                         <div class="action-content">
                             <h4>Espacios</h4>
                             <p>Gestionar ubicaciones</p>
@@ -102,7 +131,9 @@
                     </a>
 
                     <a href="#" class="action-card">
-                        <div class="action-icon">📊</div>
+                        <div class="action-icon">
+                            <span class="material-symbols-outlined">assessment</span>
+                        </div>
                         <div class="action-content">
                             <h4>Reportes</h4>
                             <p>Ver estadísticas del sistema</p>
@@ -110,7 +141,9 @@
                     </a>
 
                     <a href="#" class="action-card">
-                        <div class="action-icon">⚙️</div>
+                        <div class="action-icon">
+                            <span class="material-symbols-outlined">tune</span>
+                        </div>
                         <div class="action-content">
                             <h4>Configuración</h4>
                             <p>Ajustes del sistema</p>
@@ -124,7 +157,9 @@
                 <h3>Actividad Reciente</h3>
                 <div class="activity-list">
                     <div class="activity-item">
-                        <div class="activity-icon">📝</div>
+                        <div class="activity-icon">
+                            <span class="material-symbols-outlined">edit_note</span>
+                        </div>
                         <div class="activity-content">
                             <p><strong>Dr. Carlos Mendoza</strong> creó nuevo evento</p>
                             <span class="activity-time">Hace 15 minutos</span>
@@ -133,7 +168,9 @@
                     </div>
 
                     <div class="activity-item">
-                        <div class="activity-icon">✅</div>
+                        <div class="activity-icon">
+                            <span class="material-symbols-outlined">task_alt</span>
+                        </div>
                         <div class="activity-content">
                             <p><strong>Lic. Ana García</strong> - Evento aprobado</p>
                             <span class="activity-time">Hace 2 horas</span>
@@ -142,7 +179,9 @@
                     </div>
 
                     <div class="activity-item">
-                        <div class="activity-icon">👥</div>
+                        <div class="activity-icon">
+                            <span class="material-symbols-outlined">person_add</span>
+                        </div>
                         <div class="activity-content">
                             <p><strong>25 estudiantes</strong> se inscribieron en CTF</p>
                             <span class="activity-time">Hace 4 horas</span>

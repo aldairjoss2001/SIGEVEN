@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Iniciar Sesión - Docentes</title>
+    <title>Iniciar Sesión - Estudiantes</title>
     <link rel="stylesheet" href="css/auth.css" />
   </head>
   <body>
@@ -26,21 +26,26 @@
       <div id="main" class="auth-container">
         <div class="login-form">
           <div class="form-header">
-            <h1>Acceso Docentes</h1>
-            <p>Ingresa tus credenciales institucionales</p>
+            <h1>Acceso Estudiantes</h1>
+            <p>Ingresa tus credenciales universitarias</p>
           </div>
 
-          <form action="PerfilDocente.html">
+          <div id="mensaje-error" style="display: none; padding: 10px; margin-bottom: 15px; background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; border-radius: 4px;"></div>
+          <div id="mensaje-exito" style="display: none; padding: 10px; margin-bottom: 15px; background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; border-radius: 4px;"></div>
+
+          <form action="php/login.php" method="POST">
+            <input type="hidden" name="tipo_usuario" value="estudiante">
+            
             <div class="form-group">
-              <label for="username">Código de Docente</label>
+              <label for="username">Código de Estudiante</label>
               <input
                 type="text"
                 id="username"
                 name="username"
                 required
-                pattern="A[0-9]{5}-[0-9]"
-                placeholder="Ej: A20250-1"
-                title="Formato requerido: AXXXXX-X (donde X son números)"
+                pattern="E[0-9]{5}-[0-9]"
+                placeholder="Ej: E20250-1"
+                title="Formato requerido: EXXXXX-X (donde X son números)"
               />
             </div>
 
@@ -66,8 +71,12 @@
 
           <div class="auth-links">
             <p>
-              ¿Eres Estudiante?
-              <a href="loginEstudiante.html">Acceso para estudiantes</a>
+              ¿Eres docente?
+              <a href="loginDocente.php">Acceso para docentes</a>
+            </p>
+            <p>
+              ¿No tienes cuenta?
+              <a href="registro.php">Regístrate aquí</a>
             </p>
           </div>
         </div>
@@ -77,5 +86,24 @@
     <footer>
       <p style="color: #fed600">© 2025 Sistema de Gestión de Eventos Universitarios. Todos los derechos reservados.</p>
     </footer>
+
+    <script>
+      // Mostrar mensajes de error/éxito desde PHP
+      window.addEventListener('DOMContentLoaded', function() {
+        <?php
+        session_start();
+        if (isset($_SESSION['error_login'])) {
+            echo "document.getElementById('mensaje-error').textContent = '" . addslashes($_SESSION['error_login']) . "';";
+            echo "document.getElementById('mensaje-error').style.display = 'block';";
+            unset($_SESSION['error_login']);
+        }
+        if (isset($_SESSION['exito_registro'])) {
+            echo "document.getElementById('mensaje-exito').textContent = '" . addslashes($_SESSION['exito_registro']) . "';";
+            echo "document.getElementById('mensaje-exito').style.display = 'block';";
+            unset($_SESSION['exito_registro']);
+        }
+        ?>
+      });
+    </script>
   </body>
 </html>

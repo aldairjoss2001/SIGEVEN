@@ -81,7 +81,10 @@ body {
     flex-wrap: wrap;
 }
 
-.nav-icon { 
+.nav-icon {
+    display: flex;
+    align-items: center;
+    gap: 6px;
     background: var(--azul-institucional); 
     color: #fff; 
     padding: 8px 12px; 
@@ -960,3 +963,53 @@ footer {
         width: 100%;
     }
 } 
+/* Material Icons styling */
+.nav-search {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.nav-search .material-symbols-outlined {
+    position: absolute;
+    left: 10px;
+    color: var(--muted);
+    font-size: 20px;
+    pointer-events: none;
+}
+.nav-search .search-input {
+    padding-left: 36px !important;
+}
+.nav-icon .material-symbols-outlined {
+    font-size: 20px;
+}
+
+.stat-icon {
+    font-size: 24px;
+    color: var(--azul-institucional);
+    margin-bottom: 4px;
+}
+
+.tab {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+.tab .material-symbols-outlined {
+    font-size: 20px;
+}
+
+.btn .material-symbols-outlined {
+    font-size: 18px;
+}
+
+.event-meta .material-symbols-outlined {
+    font-size: 16px;
+    vertical-align: middle;
+    margin-right: 4px;
+}
+
+.event-stats .material-symbols-outlined {
+    font-size: 18px;
+    vertical-align: middle;
+}

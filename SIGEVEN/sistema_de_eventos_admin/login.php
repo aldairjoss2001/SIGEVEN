@@ -19,7 +19,11 @@
             </div>
 
             <!-- Form -->
-            <form class="admin-login-form" action="index.html" method="GET">
+            <div id="mensaje-error" style="display: none; padding: 10px; margin-bottom: 15px; background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; border-radius: 4px;"></div>
+            
+            <form class="admin-login-form" action="../sistema_de_eventos/php/login.php" method="POST">
+                <input type="hidden" name="tipo_usuario" value="admin">
+                
                 <div class="form-group">
                     <label for="admin-username" class="required">Usuario Administrativo</label>
                     <input type="text" id="admin-username" name="username" 
@@ -55,5 +59,19 @@
             </div>
         </div>
     </div>
+
+    <script>
+      // Mostrar mensajes de error desde PHP
+      window.addEventListener('DOMContentLoaded', function() {
+        <?php
+        session_start();
+        if (isset($_SESSION['error_login'])) {
+            echo "document.getElementById('mensaje-error').textContent = '" . addslashes($_SESSION['error_login']) . "';";
+            echo "document.getElementById('mensaje-error').style.display = 'block';";
+            unset($_SESSION['error_login']);
+        }
+        ?>
+      });
+    </script>
 </body>
 </html>

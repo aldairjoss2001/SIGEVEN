@@ -6,6 +6,8 @@
   <title>Perfil Estudiante - Sistema de Eventos</title>
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/PerfilEstudiante.css" />
+  <!-- Material Icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 <body>
   <!-- Header/Navigation -->
@@ -13,11 +15,26 @@
     <nav class="nav">
       <div class="nav-brand"><h2>Eventos EMI</h2></div>
       <div class="nav-search">
+        <span class="material-symbols-outlined">search</span>
         <input type="text" placeholder="Buscar eventos..." class="search-input" id="searchInput">
       </div>
       <div class="nav-icons">
-        <a href="calendarioEstudiantes.html" class="nav-icon">CALENDARIO</a>
-        <a href="loginEstudiante.html" class="nav-icon">SALIR</a>
+        <a href="index.html" class="nav-icon">
+          <span class="material-symbols-outlined">home</span>
+          INICIO
+        </a>
+        <a href="Solicitudes.html" class="nav-icon">
+          <span class="material-symbols-outlined">description</span>
+          SOLICITUDES
+        </a>
+        <a href="calendarioEstudiantes.html" class="nav-icon">
+          <span class="material-symbols-outlined">calendar_month</span>
+          CALENDARIO
+        </a>
+        <a href="loginEstudiante.html" class="nav-icon">
+          <span class="material-symbols-outlined">logout</span>
+          SALIR
+        </a>
       </div>
     </nav>
   </header>
@@ -34,13 +51,17 @@
     <section class="profile-header">
       <div class="cover-photo">
         <img src="assets/uploads/portada-estudiante.jpeg" alt="Cover photo" class="cover-img">
-        <button class="edit-cover-btn" onclick="simularEdicion('portada')">✏️</button>
+        <button class="edit-cover-btn" onclick="simularEdicion('portada')">
+          <span class="material-symbols-outlined">edit</span>
+        </button>
       </div>
 
       <div class="profile-info">
         <div class="profile-picture">
           <img src="assets/uploads/avatar-estudiante.jpeg" alt="Foto perfil" class="profile-img" id="profileImage">
-          <button class="edit-photo-btn" onclick="simularEdicion('foto')">📷</button>
+          <button class="edit-photo-btn" onclick="simularEdicion('foto')">
+            <span class="material-symbols-outlined">photo_camera</span>
+          </button>
         </div>
 
         <div class="profile-details">
@@ -50,14 +71,17 @@
 
           <div class="profile-stats">
             <div class="stat">
+              <span class="material-symbols-outlined stat-icon">event_available</span>
               <span class="stat-number" id="eventsAttended">12</span>
               <span class="stat-label">Eventos asistidos</span>
             </div>
             <div class="stat">
+              <span class="material-symbols-outlined stat-icon">calendar_clock</span>
               <span class="stat-number" id="eventsUpcoming">5</span>
               <span class="stat-label">Por asistir</span>
             </div>
             <div class="stat">
+              <span class="material-symbols-outlined stat-icon">workspace_premium</span>
               <span class="stat-number" id="certificatesCount">3</span>
               <span class="stat-label">Certificados</span>
             </div>
@@ -65,8 +89,14 @@
         </div>
 
         <div class="profile-actions">
-          <button class="btn btn-primary" onclick="editarPerfil()">Editar Perfil</button>
-          <button class="btn btn-secondary" onclick="mostrarConfiguracion()">Configuración</button>
+          <button class="btn btn-primary" onclick="editarPerfil()">
+            <span class="material-symbols-outlined">edit</span>
+            Editar Perfil
+          </button>
+          <button class="btn btn-secondary" onclick="mostrarConfiguracion()">
+            <span class="material-symbols-outlined">settings</span>
+            Configuración
+          </button>
         </div>
       </div>
     </section>
@@ -74,10 +104,22 @@
     <!-- Navigation Tabs -->
     <section class="profile-tabs">
       <div class="tabs">
-        <label for="tab-eventos" class="tab" role="tab" aria-controls="eventos">📅 Mis Eventos</label>
-        <label for="tab-asistidos" class="tab" role="tab" aria-controls="asistidos">✅ Asistidos</label>
-        <label for="tab-guardados" class="tab" role="tab" aria-controls="guardados">🔖 Guardados</label>
-        <label for="tab-logros" class="tab" role="tab" aria-controls="logros">🏆 Logros</label>
+        <label for="tab-eventos" class="tab" role="tab" aria-controls="eventos">
+          <span class="material-symbols-outlined">calendar_today</span>
+          Mis Eventos
+        </label>
+        <label for="tab-asistidos" class="tab" role="tab" aria-controls="asistidos">
+          <span class="material-symbols-outlined">check_circle</span>
+          Asistidos
+        </label>
+        <label for="tab-guardados" class="tab" role="tab" aria-controls="guardados">
+          <span class="material-symbols-outlined">bookmark</span>
+          Guardados
+        </label>
+        <label for="tab-logros" class="tab" role="tab" aria-controls="logros">
+          <span class="material-symbols-outlined">emoji_events</span>
+          Logros
+        </label>
       </div>
     </section>
 
@@ -97,18 +139,36 @@
             <div class="event-content">
               <h3 class="event-title">VII VERSIÓN CTF EMI 2025</h3>
               <div class="event-meta">
-                <span class="event-date">📅 10 - 11 Oct 2025 - 18:00</span>
-                <span class="event-location">📍 Laboratorios de Computacion - Bloque A</span>
+                <span class="event-date">
+                  <span class="material-symbols-outlined">event</span>
+                  10 - 11 Oct 2025 - 18:00
+                </span>
+                <span class="event-location">
+                  <span class="material-symbols-outlined">location_on</span>
+                  Laboratorios de Computacion - Bloque A
+                </span>
               </div>
               <p class="event-description">Sexta version de desafio captura la bandera, donde los estudiantes pondrán a prueba sus habilidades....</p>
               <div class="event-stats">
-                <span class="attendees">👥 <span id="attendeesCount1">45</span> asistentes confirmados</span>
+                <span class="attendees">
+                  <span class="material-symbols-outlined">group</span>
+                  <span id="attendeesCount1">45</span> asistentes confirmados
+                </span>
                 <span class="capacity">Capacidad: 80 personas</span>
               </div>
               <div class="event-actions">
-                <button class="btn btn-confirm" onclick="confirmarAsistencia(1)">✅ Confirmar Asistencia</button>
-                <button class="btn btn-secondary" onclick="guardarEvento(1)">🔖 Guardar</button>
-                <button class="btn btn-text" onclick="compartirEvento(1)">📤 Compartir</button>
+                <button class="btn btn-confirm" onclick="confirmarAsistencia(1)">
+                  <span class="material-symbols-outlined">check_circle</span>
+                  Confirmar Asistencia
+                </button>
+                <button class="btn btn-secondary" onclick="guardarEvento(1)">
+                  <span class="material-symbols-outlined">bookmark</span>
+                  Guardar
+                </button>
+                <button class="btn btn-text" onclick="compartirEvento(1)">
+                  <span class="material-symbols-outlined">share</span>
+                  Compartir
+                </button>
               </div>
             </div>
           </article>
@@ -123,12 +183,12 @@
               <h3 class="event-title">Campaña de Arborización</h3>
               <div class="event-meta">
                 <span class="event-date">📅 05 Oct 2025</span>
-                <span class="event-location">📍 Playón Irpavi</span>
+                <span class="event-location"><span class="material-symbols-outlined">location_on</span> Playón Irpavi</span>
               </div>
               <p class="event-description">Únete a nosotros en la campaña de arborización para contribuir al cuidado del medio ambiente...</p>
               <div class="event-status">
-                <div class="status-confirmed">✅ Asistencia confirmada</div>
-                <button class="btn btn-outline" onclick="verUbicacion(2)">📍 Ver ubicación</button>
+                <div class="status-confirmed">  <span class="material-symbols-outlined">check_circle</span> Asistencia confirmada</div>
+                <button class="btn btn-outline" onclick="verUbicacion(2)"><span class="material-symbols-outlined">location_on</span> Ver ubicación</button>
               </div>
             </div>
           </article>
@@ -143,11 +203,11 @@
               <h3 class="event-title">Congreso Interuniversitario DEEPTECH</h3>
               <div class="event-meta">
                 <span class="event-date">📅 08 - 09 Sep 2024</span>
-                <span class="event-location">📍 Auditorio EMI, Irpavi</span>
+                <span class="event-location"><span class="material-symbols-outlined">location_on</span> Auditorio EMI, Irpavi</span>
               </div>
               <p class="event-description">Inteligencia Artificial, Bioingenieria, Ciencia de materiales y más...</p>
               <div class="event-completion">
-                <div class="completion-badge">🏆 Asistencia completada</div>
+                <div class="completion-badge">  <span class="material-symbols-outlined">emoji_events</span> Asistencia completada</div>
                 <button class="btn btn-text" onclick="descargarCertificado(3)">📄 Descargar certificado</button>
               </div>
             </div>
@@ -362,7 +422,7 @@
       if (!event) return;
 
       // Simular mostrar ubicación en mapa
-      mostrarNotificacion(`📍 Mostrando ubicación: ${event.location}`);
+      mostrarNotificacion(`<span class="material-symbols-outlined">location_on</span> Mostrando ubicación: ${event.location}`);
       
       // En un sistema real, aquí se abriría Google Maps o mapa interno
       setTimeout(() => {
@@ -412,7 +472,7 @@
             <h3 class="event-title">${event.title}</h3>
             <div class="event-meta">
               <span class="event-date">📅 ${event.date}</span>
-              <span class="event-location">📍 ${event.location}</span>
+              <span class="event-location"><span class="material-symbols-outlined">location_on</span> ${event.location}</span>
             </div>
             <p class="event-description">${event.description}</p>
             <div class="event-actions">
@@ -456,7 +516,7 @@
             <h3 class="event-title">${event.title}</h3>
             <div class="event-meta">
               <span class="event-date">📅 ${event.date}</span>
-              <span class="event-location">📍 ${event.location}</span>
+              <span class="event-location"><span class="material-symbols-outlined">location_on</span> ${event.location}</span>
             </div>
             <p class="event-description">${event.description}</p>
             <div class="event-actions">
