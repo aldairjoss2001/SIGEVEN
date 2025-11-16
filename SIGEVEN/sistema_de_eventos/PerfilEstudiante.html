@@ -10,33 +10,37 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 <body>
-  <!-- Header/Navigation -->
-  <header class="header">
-    <nav class="nav">
-      <div class="nav-brand"><h2>Eventos EMI</h2></div>
-      <div class="nav-search">
-        <span class="material-symbols-outlined">search</span>
-        <input type="text" placeholder="Buscar eventos..." class="search-input" id="searchInput">
-      </div>
-      <div class="nav-icons">
-        <a href="index.html" class="nav-icon">
-          <span class="material-symbols-outlined">home</span>
-          INICIO
-        </a>
-        <a href="Solicitudes.html" class="nav-icon">
-          <span class="material-symbols-outlined">description</span>
-          SOLICITUDES
-        </a>
-        <a href="calendarioEstudiantes.html" class="nav-icon">
-          <span class="material-symbols-outlined">calendar_month</span>
-          CALENDARIO
-        </a>
-        <a href="loginEstudiante.html" class="nav-icon">
-          <span class="material-symbols-outlined">logout</span>
-          SALIR
-        </a>
-      </div>
+  <!-- Vertical Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <img src="assets/icons/logo.png" alt="Logo EMI" class="logo-img">
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html" class="sidebar-item active">
+        <span class="material-symbols-outlined">home</span>
+        <span class="sidebar-text">INICIO</span>
+      </a>
+      <a href="Solicitudes.html" class="sidebar-item">
+        <span class="material-symbols-outlined">description</span>
+        <span class="sidebar-text">SOLICITUDES</span>
+      </a>
+      <a href="calendarioEstudiantes.html" class="sidebar-item">
+        <span class="material-symbols-outlined">calendar_month</span>
+        <span class="sidebar-text">CALENDARIO</span>
+      </a>
+      <a href="loginEstudiante.html" class="sidebar-item">
+        <span class="material-symbols-outlined">logout</span>
+        <span class="sidebar-text">SALIR</span>
+      </a>
     </nav>
+  </aside>
+
+  <!-- Top Search Bar -->
+  <header class="top-header">
+    <div class="header-search">
+      <span class="material-symbols-outlined">search</span>
+      <input type="text" placeholder="Buscar eventos..." class="search-input" id="searchInput">
+    </div>
   </header>
 
   <!-- Main Content -->

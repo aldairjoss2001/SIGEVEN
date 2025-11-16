@@ -26,51 +26,42 @@
   </style>
 </head>
 <body>
-  <!-- Header/Navigation - Facebook Style -->
-  <header class="header">
-    <nav class="nav">
-      <div class="nav-left">
-        <div class="nav-brand">
-          <span class="material-symbols-outlined brand-icon">event</span>
-          <h2>Eventos EMI</h2>
-        </div>
-        <div class="nav-search">
-          <span class="material-symbols-outlined search-icon">search</span>
-          <input type="text" placeholder="Buscar eventos..." class="search-input" id="searchInput">
-        </div>
-      </div>
-      
-      <div class="nav-center">
-        <a href="PerfilExterno.html" class="nav-menu-item active" title="Inicio">
-          <span class="material-symbols-outlined">home</span>
-        </a>
-        <a href="calendarioEstudiantes.html" class="nav-menu-item" title="Eventos Públicos">
-          <span class="material-symbols-outlined">public</span>
-        </a>
-        <a href="#solicitudes" class="nav-menu-item" title="Mis Registros">
-          <span class="material-symbols-outlined">confirmation_number</span>
-        </a>
-        <a href="#ayuda" class="nav-menu-item" title="Ayuda">
-          <span class="material-symbols-outlined">help</span>
-        </a>
-      </div>
-      
-      <div class="nav-right">
-        <button class="nav-icon-btn" title="Notificaciones">
-          <span class="material-symbols-outlined">notifications</span>
-          <span class="notification-badge">1</span>
-        </button>
-        <button class="nav-icon-btn" title="Mensajes">
-          <span class="material-symbols-outlined">mail</span>
-        </button>
-        <div class="nav-profile-dropdown">
-          <button class="nav-profile-btn">
-            <img src="assets/uploads/avatar-estudiante.jpeg" alt="Perfil" class="nav-avatar">
-            <span class="material-symbols-outlined">expand_more</span>
-          </button>
-          <div class="dropdown-menu">
-            <a href="#perfil" class="dropdown-item">
-              <span class="material-symbols-outlined">person</span>
+  <!-- Vertical Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <img src="assets/icons/logo.png" alt="Logo EMI" class="logo-img">
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html" class="sidebar-item active">
+        <span class="material-symbols-outlined">home</span>
+        <span class="sidebar-text">INICIO</span>
+      </a>
+      <a href="calendarioEstudiantes.html" class="sidebar-item">
+        <span class="material-symbols-outlined">public</span>
+        <span class="sidebar-text">EVENTOS PÚBLICOS</span>
+      </a>
+      <a href="Solicitudes.html" class="sidebar-item">
+        <span class="material-symbols-outlined">confirmation_number</span>
+        <span class="sidebar-text">MIS REGISTROS</span>
+      </a>
+      <a href="#ayuda" class="sidebar-item">
+        <span class="material-symbols-outlined">help</span>
+        <span class="sidebar-text">AYUDA</span>
+      </a>
+      <a href="loginEstudiante.html" class="sidebar-item">
+        <span class="material-symbols-outlined">logout</span>
+        <span class="sidebar-text">SALIR</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- Top Search Bar -->
+  <header class="top-header">
+    <div class="header-search">
+      <span class="material-symbols-outlined">search</span>
+      <input type="text" placeholder="Buscar eventos..." class="search-input" id="searchInput">
+    </div>
+  </header>
               Mi Perfil
             </a>
             <a href="#configuracion" class="dropdown-item">
