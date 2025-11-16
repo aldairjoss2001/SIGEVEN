@@ -148,8 +148,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
                 <div class="auth-links">
                     <p>
-                        ¿Necesitas crear una cuenta?
-                        <a href="crear_usuario_demo.php">Regístrate aquí</a>
+                        ¿No tienes cuenta?
+                        <a href="sistema_de_eventos/registro_externo.php">Regístrate aquí (Solo usuarios externos)</a>
+                    </p>
+                    <p style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(254, 214, 0, 0.3); font-size: 0.9rem; color: rgba(255,255,255,0.8);">
+                        <span style="vertical-align: middle;">🏫</span>
+                        <strong>¿Eres estudiante, docente o administrativo?</strong><br>
+                        Contacta al administrador para obtener tu cuenta institucional
                     </p>
                 </div>
             </div>
