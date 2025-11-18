@@ -57,79 +57,96 @@ if (strlen($contraseña) < 6) {
 // Encriptar contraseña
 $hash = password_hash($contraseña, PASSWORD_BCRYPT);
 
-// Verificar si el correo ya existe en alguna tabla
-// Verificar en estudiantes
-$stmt = $conn->prepare("SELECT id FROM estudiantes WHERE correo = ?");
-$stmt->bind_param("s", $correo);
-$stmt->execute();
-if ($stmt->get_result()->num_rows > 0) {
-    $_SESSION['error_registro'] = 'Este correo ya está registrado en el sistema';
-    $stmt->close();
-    $conn->close();
-    header('Location: ../registro_externo.php');
-    exit();
-}
-$stmt->close();
-
-// Verificar en docentes
-$stmt = $conn->prepare("SELECT id FROM docentes WHERE correo = ?");
-$stmt->bind_param("s", $correo);
-$stmt->execute();
-if ($stmt->get_result()->num_rows > 0) {
-    $_SESSION['error_registro'] = 'Este correo ya está registrado en el sistema';
-    $stmt->close();
-    $conn->close();
-    header('Location: ../registro_externo.php');
-    exit();
-}
-$stmt->close();
-
-// Verificar en administradores
-$stmt = $conn->prepare("SELECT id FROM administradores WHERE correo = ?");
-$stmt->bind_param("s", $correo);
-$stmt->execute();
-if ($stmt->get_result()->num_rows > 0) {
-    $_SESSION['error_registro'] = 'Este correo ya está registrado en el sistema';
-    $stmt->close();
-    $conn->close();
-    header('Location: ../registro_externo.php');
-    exit();
-}
-$stmt->close();
-
-// Crear tabla de usuarios externos si no existe
+// Crear tabla usuarios_externos si no existe
 $crear_tabla = "CREATE TABLE IF NOT EXISTS usuarios_externos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(255) NOT NULL,
-    correo VARCHAR(255) UNIQUE NOT NULL,
+    correo VARCHAR(255) NOT NULL UNIQUE,
     telefono VARCHAR(20),
     contrasena VARCHAR(255) NOT NULL,
     fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     activo BOOLEAN DEFAULT TRUE
-)";
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci";
 
 if (!$conn->query($crear_tabla)) {
-    $_SESSION['error_registro'] = 'Error al preparar el sistema. Contacte al administrador.';
+    $_SESSION['error_registro'] = 'Error al preparar la base de datos';
     $conn->close();
     header('Location: ../registro_externo.php');
     exit();
+}
+
+// Verificar si el correo ya existe en alguna tabla
+// Verificar en estudiantes
+$stmt = $conn->prepare("SELECT id FROM estudiantes WHERE correo = ?");
+if ($stmt === false) {
+    // La tabla estudiantes no existe, continuar
+    $stmt = null;
+} else {
+        $stmt->bind_param("s", $correo);
+    $stmt->execute();
+    if ($stmt->get_result()->num_rows > 0) {
+        $_SESSION['error_registro'] = 'Este correo ya está registrado en el sistema';
+        $stmt->close();
+        $conn->close();
+        header('Location: ../registro_externo.php');
+        exit();
+    }
+    $stmt->close();
+}
+
+// Verificar en docentes
+$stmt = $conn->prepare("SELECT id FROM docentes WHERE correo = ?");
+if ($stmt !== false) {
+    $stmt->bind_param("s", $correo);
+    $stmt->execute();
+    if ($stmt->get_result()->num_rows > 0) {
+        $_SESSION['error_registro'] = 'Este correo ya está registrado en el sistema';
+        $stmt->close();
+        $conn->close();
+        header('Location: ../registro_externo.php');
+        exit();
+    }
+    $stmt->close();
+}
+
+// Verificar en administradores
+$stmt = $conn->prepare("SELECT id FROM administradores WHERE correo = ?");
+if ($stmt !== false) {
+    $stmt->bind_param("s", $correo);
+    $stmt->execute();
+    if ($stmt->get_result()->num_rows > 0) {
+        $_SESSION['error_registro'] = 'Este correo ya está registrado en el sistema';
+        $stmt->close();
+        $conn->close();
+        header('Location: ../registro_externo.php');
+        exit();
+    }
+    $stmt->close();
 }
 
 // Verificar si ya existe en usuarios_externos
 $stmt = $conn->prepare("SELECT id FROM usuarios_externos WHERE correo = ?");
-$stmt->bind_param("s", $correo);
-$stmt->execute();
-if ($stmt->get_result()->num_rows > 0) {
-    $_SESSION['error_registro'] = 'Este correo ya está registrado';
+if ($stmt !== false) {
+    $stmt->bind_param("s", $correo);
+    $stmt->execute();
+    if ($stmt->get_result()->num_rows > 0) {
+        $_SESSION['error_registro'] = 'Este correo ya está registrado';
+        $stmt->close();
+        $conn->close();
+        header('Location: ../registro_externo.php');
+        exit();
+    }
     $stmt->close();
+}
+
+// Insertar usuario externo
+$stmt = $conn->prepare("INSERT INTO usuarios_externos (nombre, correo, telefono, contrasena) VALUES (?, ?, ?, ?)");
+if ($stmt === false) {
+    $_SESSION['error_registro'] = 'Error al preparar el registro';
     $conn->close();
     header('Location: ../registro_externo.php');
     exit();
 }
-$stmt->close();
-
-// Insertar usuario externo
-$stmt = $conn->prepare("INSERT INTO usuarios_externos (nombre, correo, telefono, contrasena) VALUES (?, ?, ?, ?)");
 $stmt->bind_param("ssss", $nombre, $correo, $telefono, $hash);
 
 if ($stmt->execute()) {
