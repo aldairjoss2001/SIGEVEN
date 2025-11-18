@@ -14,6 +14,12 @@
       font-size: inherit;
     }
     
+    /* Main content adjustment for sidebar */
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    
     /* Guía de Pasos */
     .steps-guide {
       background: white;
@@ -206,70 +212,41 @@
   </style>
 </head>
 <body>
-  <!-- Header/Navigation - Facebook Style -->
-  <header class="header">
-    <nav class="nav">
-      <div class="nav-left">
-        <div class="nav-brand">
-          <span class="material-symbols-outlined brand-icon">event</span>
-          <h2>Eventos EMI</h2>
-        </div>
-        <div class="nav-search">
-          <span class="material-symbols-outlined search-icon">search</span>
-          <input type="text" placeholder="Buscar eventos..." class="search-input">
-        </div>
-      </div>
-      
-      <div class="nav-center">
-        <a href="PerfilEstudiante.html" class="nav-menu-item" title="Inicio">
-          <span class="material-symbols-outlined">home</span>
-        </a>
-        <a href="calendarioEstudiantes.html" class="nav-menu-item" title="Eventos">
-          <span class="material-symbols-outlined">event</span>
-        </a>
-        <a href="Solicitudes.html" class="nav-menu-item active" title="Mis Solicitudes">
-          <span class="material-symbols-outlined">description</span>
-        </a>
-        <a href="#grupos" class="nav-menu-item" title="Grupos">
-          <span class="material-symbols-outlined">groups</span>
-        </a>
-      </div>
-      
-      <div class="nav-right">
-        <button class="nav-icon-btn" title="Notificaciones">
-          <span class="material-symbols-outlined">notifications</span>
-          <span class="notification-badge">3</span>
-        </button>
-        <button class="nav-icon-btn" title="Mensajes">
-          <span class="material-symbols-outlined">mail</span>
-        </button>
-        <div class="nav-profile-dropdown">
-          <button class="nav-profile-btn">
-            <img src="assets/uploads/avatar-estudiante.jpeg" alt="Perfil" class="nav-avatar">
-            <span class="material-symbols-outlined">expand_more</span>
-          </button>
-          <div class="dropdown-menu">
-            <a href="#perfil" class="dropdown-item">
-              <span class="material-symbols-outlined">person</span>
-              Mi Perfil
-            </a>
-            <a href="#configuracion" class="dropdown-item">
-              <span class="material-symbols-outlined">settings</span>
-              Configuración
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="../logout.php" class="dropdown-item logout">
-              <span class="material-symbols-outlined">logout</span>
-              Cerrar Sesión
-            </a>
-          </div>
-        </div>
-      </div>
+  <!-- Vertical Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <img src="assets/icons/logo.png" alt="Logo EMI" class="logo-img">
+    </div>
+    <nav class="sidebar-nav">
+      <a href="PerfilEstudiante.html" class="sidebar-item">
+        <span class="material-symbols-outlined">home</span>
+        <span class="sidebar-text">INICIO</span>
+      </a>
+      <a href="Solicitudes.html" class="sidebar-item active">
+        <span class="material-symbols-outlined">description</span>
+        <span class="sidebar-text">SOLICITUDES</span>
+      </a>
+      <a href="calendarioEstudiantes.html" class="sidebar-item">
+        <span class="material-symbols-outlined">calendar_month</span>
+        <span class="sidebar-text">CALENDARIO</span>
+      </a>
+      <a href="../logout.php" class="sidebar-item">
+        <span class="material-symbols-outlined">logout</span>
+        <span class="sidebar-text">SALIR</span>
+      </a>
     </nav>
+  </aside>
+
+  <!-- Top Search Bar -->
+  <header class="top-header">
+    <div class="header-search">
+      <span class="material-symbols-outlined">search</span>
+      <input type="text" placeholder="Buscar eventos..." class="search-input">
+    </div>
   </header>
 
   <!-- Main Content -->
-  <main class="profile-container" style="padding-top: 80px;">
+  <main class="profile-container">
     <div style="max-width: 1200px; margin: 0 auto; padding: 2rem;">
       <h1 style="color: #163E8C; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 10px;">
         <span class="material-symbols-outlined" style="font-size: 2rem;">description</span>
