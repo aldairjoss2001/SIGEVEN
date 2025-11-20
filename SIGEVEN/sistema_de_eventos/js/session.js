@@ -173,7 +173,7 @@ const Session = {
         const profileUrls = {
             estudiante: basePath + 'PerfilEstudiante.html',
             docente: basePath + 'PerfilDocente.html',
-            admin: basePath ? '../dashboard_admin.html' : 'dashboard_admin.html'
+            admin: basePath ? 'sistema_de_eventos_admin/index.html' : 'sistema_de_eventos_admin/index.html'
         };
         
         const url = profileUrls[userType];
