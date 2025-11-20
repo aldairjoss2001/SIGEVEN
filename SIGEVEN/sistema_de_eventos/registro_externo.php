@@ -158,19 +158,20 @@
     <p>&copy; 2025 Sistema de Gestión de Eventos Universitarios. Todos los derechos reservados.</p>
   </footer>
 
+  <!-- Notification System -->
+  <script src="js/notifications.js"></script>
+  
   <script>
-    // Mostrar mensajes de error/éxito desde sesión PHP
+    // Verificar si hay mensaje de éxito de registro
     <?php
     session_start();
-    if (isset($_SESSION['error_registro'])) {
-        echo "document.getElementById('mensaje-error').textContent = '" . addslashes($_SESSION['error_registro']) . "';";
-        echo "document.getElementById('mensaje-error').style.display = 'block';";
-        unset($_SESSION['error_registro']);
-    }
     if (isset($_SESSION['exito_registro'])) {
-        echo "document.getElementById('mensaje-exito').textContent = '" . addslashes($_SESSION['exito_registro']) . "';";
-        echo "document.getElementById('mensaje-exito').style.display = 'block';";
+        echo "showSuccessNotification('Usuario Registrado', '" . addslashes($_SESSION['exito_registro']) . "', null, 'PerfilExterno.html');";
         unset($_SESSION['exito_registro']);
+    }
+    if (isset($_SESSION['error_registro'])) {
+        echo "showErrorNotification('Error de Registro', '" . addslashes($_SESSION['error_registro']) . "');";
+        unset($_SESSION['error_registro']);
     }
     ?>
   </script>

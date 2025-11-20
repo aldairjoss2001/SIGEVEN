@@ -490,6 +490,9 @@
         </div>
     </div>
 
+    <!-- Notification System -->
+    <script src="js/notifications.js"></script>
+    
     <script>
         function scrollToTable() {
             document.getElementById('tableSection').scrollIntoView({ 
@@ -497,6 +500,25 @@
                 block: 'start'
             });
         }
+        
+        // Funciones de ejemplo para aprobar/rechazar (simula las acciones)
+        document.querySelectorAll('.action-btn.approve').forEach(btn => {
+            btn.addEventListener('click', function() {
+                showSuccessNotification(
+                    'Solicitud Aprobada',
+                    'La solicitud ha sido aprobada exitosamente. El solicitante recibirá una notificación por correo electrónico.'
+                );
+            });
+        });
+        
+        document.querySelectorAll('.action-btn.reject').forEach(btn => {
+            btn.addEventListener('click', function() {
+                showWarningNotification(
+                    'Solicitud Rechazada',
+                    'La solicitud ha sido rechazada. Se ha notificado al solicitante.'
+                );
+            });
+        });
     </script>
 </body>
 </html>

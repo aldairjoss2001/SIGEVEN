@@ -445,16 +445,26 @@
             toggleIcon.textContent = section.classList.contains('collapsed') ? '▶' : '▼';
         }
 
-        function showNotification(message, type) {
-            // Simulación simple de notificación
-            alert(`${type === 'success' ? '✅' : type === 'error' ? '❌' : '⚠️'} ${message}`);
-        }
-
         // Inicialización
         document.addEventListener('DOMContentLoaded', function() {
             // Colapsar sección de aprobados por defecto
             toggleSection('approved-events');
         });
+    </script>
+    
+    <!-- Notification System -->
+    <script src="../sistema_de_eventos/js/notifications.js"></script>
+    <script>
+        // Reemplazar función showNotification con el nuevo sistema
+        function showNotification(message, type) {
+            if (type === 'success') {
+                showSuccessNotification('Operación Exitosa', message);
+            } else if (type === 'error') {
+                showErrorNotification('Error', message);
+            } else {
+                showWarningNotification('Aviso', message);
+            }
+        }
     </script>
     </div>
     </main>
