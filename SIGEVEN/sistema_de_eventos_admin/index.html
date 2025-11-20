@@ -330,5 +330,31 @@
             </section>
         </div>
     </main>
+
+    <!-- JavaScript modules -->
+    <script src="../sistema_de_eventos/js/api.js"></script>
+    <script src="../sistema_de_eventos/js/session.js"></script>
+    <script src="../sistema_de_eventos/js/auth.js"></script>
+    <script src="../sistema_de_eventos/js/user.js"></script>
+
+    <script>
+        // Protect page - require admin authentication
+        Session.requireAuth('admin');
+
+        // Display user information and setup logout
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize User module (sets up logout links)
+            User.init();
+            
+            const userData = Session.get();
+            if (userData) {
+                // Update admin name if element exists
+                const nameElements = document.querySelectorAll('[data-user-name]');
+                nameElements.forEach(el => {
+                    el.textContent = userData.nombre;
+                });
+            }
+        });
+    </script>
 </body>
 </html>
