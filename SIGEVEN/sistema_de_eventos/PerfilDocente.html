@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="css/PerfilDocente.css" />
     <!-- Material Icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <!-- JavaScript modules -->
+    <script src="js/api.js"></script>
+    <script src="js/session.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/user.js"></script>
   </head>
   <body>
   <!-- Vertical Sidebar Navigation -->
@@ -32,7 +37,7 @@
         <span class="material-symbols-outlined">calendar_month</span>
         <span class="sidebar-text">CALENDARIO</span>
       </a>
-      <a href="../logout.php" class="sidebar-item">
+      <a href="../logout.php" class="sidebar-item" id="logoutLink">
         <span class="material-symbols-outlined">logout</span>
         <span class="sidebar-text">SALIR</span>
       </a>
@@ -1173,5 +1178,22 @@
         transform: translateY(-1px);
       }
     </style>
+
+    <script>
+      // Protect page - require authentication
+      Session.requireAuth('docente');
+
+      // Display user information
+      document.addEventListener('DOMContentLoaded', function() {
+        const userData = Session.get();
+        if (userData) {
+          // Update teacher name if element exists
+          const nameElement = document.getElementById('teacherName');
+          if (nameElement) {
+            nameElement.textContent = userData.nombre;
+          }
+        }
+      });
+    </script>
   </body>
 </html>
