@@ -325,9 +325,24 @@
 
     <!-- Main Content -->
     <div class="main-content">
+        <!-- Quick Actions -->
+        <div class="actions-bar" style="margin-bottom: 2rem;">
+            <h2 style="color: #163E8C; margin: 0;">Mis Solicitudes</h2>
+            <div style="display: flex; gap: 1rem;">
+                <button class="btn btn-primary" onclick="window.location.href='calendarioEstudiantes.html'">
+                    <span class="material-symbols-outlined">add_circle</span>
+                    Nueva Solicitud
+                </button>
+                <button class="btn" style="background: #FED600; color: #163E8C;" onclick="scrollToSolicitudes()">
+                    <span class="material-symbols-outlined">visibility</span>
+                    Ver Estado Solicitud
+                </button>
+            </div>
+        </div>
+
         <!-- Guide -->
         <div class="guide-section">
-            <h2>¿Cómo solicitar un evento?</h2>
+            <h2>¿Cómo realizar una solicitud?</h2>
             <div class="steps">
                 <div class="step">
                     <div class="step-icon">
@@ -367,15 +382,10 @@
             </div>
         </div>
 
-        <!-- Actions -->
-        <div class="actions-bar">
-            <h2 style="color: #163E8C;">Mis Solicitudes</h2>
-            <button class="btn btn-primary">
-                <span class="material-symbols-outlined">add_circle</span>
-                Nueva Solicitud
-            </button>
-        </div>
-
+        <!-- Solicitudes Section -->
+        <div id="solicitudesSection">
+            <h2 style="color: #163E8C; margin-bottom: 1.5rem;">Estado de tus Solicitudes</h2>
+        
         <!-- Solicitudes -->
         <div class="solicitudes-grid">
             <div class="solicitud-card">
@@ -459,6 +469,16 @@
                 </div>
             </div>
         </div>
+        </div>
     </div>
+
+    <script>
+        function scrollToSolicitudes() {
+            document.getElementById('solicitudesSection').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    </script>
 </body>
 </html>

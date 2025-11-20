@@ -310,7 +310,58 @@
 
     <!-- Main Content -->
     <div class="main-content">
+        <!-- Quick Actions -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+            <h2 style="color: #163E8C; margin: 0;">Gestión de Solicitudes</h2>
+            <div style="display: flex; gap: 1rem;">
+                <button class="btn btn-primary" onclick="window.location.href='NuevoEvento.html'">
+                    <span class="material-symbols-outlined">add_circle</span>
+                    Nueva Solicitud
+                </button>
+                <button class="btn" style="background: #FED600; color: #163E8C;" onclick="scrollToTable()">
+                    <span class="material-symbols-outlined">visibility</span>
+                    Ver Estado Solicitudes
+                </button>
+            </div>
+        </div>
+
+        <!-- Guide Section for Teachers -->
+        <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 2rem;">
+            <h2 style="color: #163E8C; margin-bottom: 1.5rem;">¿Cómo gestionar solicitudes de eventos?</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem;">
+                <div style="text-align: center;">
+                    <div style="width: 60px; height: 60px; background: #FED600; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
+                        <span class="material-symbols-outlined" style="font-size: 32px; color: #163E8C;">add_circle</span>
+                    </div>
+                    <h3 style="font-size: 0.875rem; color: #333; margin-bottom: 0.5rem;">1. Crear Evento</h3>
+                    <p style="font-size: 0.75rem; color: #666;">Crea una nueva solicitud de evento</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="width: 60px; height: 60px; background: #FED600; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
+                        <span class="material-symbols-outlined" style="font-size: 32px; color: #163E8C;">pending_actions</span>
+                    </div>
+                    <h3 style="font-size: 0.875rem; color: #333; margin-bottom: 0.5rem;">2. Revisión</h3>
+                    <p style="font-size: 0.75rem; color: #666;">La administración revisa tu solicitud</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="width: 60px; height: 60px; background: #FED600; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
+                        <span class="material-symbols-outlined" style="font-size: 32px; color: #163E8C;">check_circle</span>
+                    </div>
+                    <h3 style="font-size: 0.875rem; color: #333; margin-bottom: 0.5rem;">3. Aprobación</h3>
+                    <p style="font-size: 0.75rem; color: #666;">Recibes confirmación y puedes gestionar</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="width: 60px; height: 60px; background: #FED600; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
+                        <span class="material-symbols-outlined" style="font-size: 32px; color: #163E8C;">groups</span>
+                    </div>
+                    <h3 style="font-size: 0.875rem; color: #333; margin-bottom: 0.5rem;">4. Gestionar</h3>
+                    <p style="font-size: 0.75rem; color: #666;">Administra participantes y recursos</p>
+                </div>
+            </div>
+        </div>
+
         <!-- Stats -->
+        <div id="tableSection">
         <div class="stats-grid">
             <div class="stat-card">
                 <h3>Total Solicitudes</h3>
@@ -436,6 +487,16 @@
                 </tbody>
             </table>
         </div>
+        </div>
     </div>
+
+    <script>
+        function scrollToTable() {
+            document.getElementById('tableSection').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    </script>
 </body>
 </html>
