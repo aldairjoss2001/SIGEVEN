@@ -125,30 +125,21 @@ const Session = {
      * @param {string} userType - User type (estudiante, docente, admin)
      */
     redirectToLogin(userType = null) {
-        const type = userType || this.getUserType() || 'estudiante';
-        
         // Determine current location to build correct path
         const currentPath = window.location.pathname;
-        let basePath = '';
+        let loginPath = '';
         
         // Check if we're in sistema_de_eventos or sistema_de_eventos_admin
         if (currentPath.includes('sistema_de_eventos_admin')) {
-            basePath = '';
+            loginPath = '../login.html';
         } else if (currentPath.includes('sistema_de_eventos')) {
-            basePath = '';
+            loginPath = '../login.html';
         } else {
-            // We're in root, go into sistema_de_eventos
-            basePath = 'sistema_de_eventos/';
+            // We're in root
+            loginPath = 'login.html';
         }
         
-        const loginUrls = {
-            estudiante: basePath + 'loginEstudiante.html',
-            docente: basePath + 'loginDocente.html',
-            admin: basePath ? '../sistema_de_eventos_admin/login.html' : 'login.html'
-        };
-        
-        const url = loginUrls[type] || loginUrls.estudiante;
-        window.location.href = url;
+        window.location.href = loginPath;
     },
     
     /**
