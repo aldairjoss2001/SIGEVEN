@@ -12,17 +12,18 @@
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
         
-        /* Hero Section with institutional colors */
+        /* Hero Section */
         .hero-section {
             background: linear-gradient(135deg, #163E8C 0%, #1a4ba8 100%);
-            padding: 3rem 2rem;
+            padding: 4rem 2rem;
             text-align: center;
             color: white;
+            margin-bottom: 3rem;
         }
         
         .hero-section h1 {
-            font-size: 2.8rem;
-            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
             font-weight: 700;
             display: flex;
             align-items: center;
@@ -31,48 +32,23 @@
         }
         
         .hero-section .hero-icon {
-            font-size: 3.5rem !important;
-            color: #FED600;
+            font-size: 3rem !important;
         }
         
         .hero-section p {
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             margin-bottom: 2rem;
             opacity: 0.95;
         }
         
-        /* Main content area */
-        .main-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 3rem 2rem;
-        }
-        
-        .intro-section {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .intro-section h2 {
-            color: #163E8C;
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-        
-        .intro-section p {
-            color: #555;
-            font-size: 1.1rem;
-            line-height: 1.7;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        /* Features Grid with yellow accents */
+        /* Features Grid */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            margin: 3rem 0;
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+            padding: 0 2rem;
         }
         
         .feature-card {
@@ -83,18 +59,6 @@
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border-top: 4px solid #FED600;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #FED600 0%, #163E8C 100%);
         }
         
         .feature-card:hover {
@@ -106,16 +70,12 @@
             font-size: 4rem !important;
             color: #163E8C;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, #FED600 0%, #ffd000 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
         
         .feature-card h3 {
             color: #163E8C;
             margin-bottom: 0.75rem;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
         }
         
         .feature-card p {
@@ -124,68 +84,18 @@
             margin-bottom: 1rem;
         }
         
-        .feature-highlight {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: #FED600;
-            color: #163E8C;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-top: 1rem;
+        .feature-card ul {
+            text-align: left;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
         }
         
-        /* CTA Buttons */
-        .cta-section {
-            text-align: center;
-            margin: 3rem 0;
-            padding: 2rem;
-            background: linear-gradient(135deg, rgba(22, 62, 140, 0.05) 0%, rgba(254, 214, 0, 0.05) 100%);
-            border-radius: 12px;
+        .feature-card ul li {
+            margin-bottom: 0.5rem;
         }
         
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-        }
-        
-        .btn-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            background: #163E8C;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-        
-        .btn-cta:hover {
-            background: #0f2d6b;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        }
-        
-        .btn-cta-secondary {
-            background: #FED600;
-            color: #163E8C;
-        }
-        
-        .btn-cta-secondary:hover {
-            background: #e5c200;
-        }
-        
-        /* Enhanced Footer with same colors */
+        /* Enhanced Footer */
         .enhanced-footer {
             background: #1a2947;
             color: white;
@@ -248,7 +158,38 @@
         
         .footer-bottom p {
             margin: 0.5rem 0;
-            color: #FED600;
+        }
+        
+        .btn-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 2rem;
+            background: #163E8C;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            margin: 0.5rem;
+        }
+        
+        .btn-cta:hover {
+            background: #0f2d6b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .btn-cta-secondary {
+            background: #FED600;
+            color: #163E8C;
+        }
+        
+        .btn-cta-secondary:hover {
+            background: #e5c200;
         }
     </style>
 </head>
@@ -257,7 +198,7 @@
 
     <header>
         <div class="header-inner">
-            <img src="sistema_de_eventos/assets/icons/mobile.png" alt="logo" class="logo" />
+            <img src="sistema_de_eventos/assets/icons/logo.png" alt="logo" class="logo" />
             <nav class="main-nav" aria-label="Menú principal">
                 <ul class="main-menu">
                     <li><a href="index.php">INICIO</a></li>
@@ -268,99 +209,15 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <h1>
-            <span class="material-symbols-outlined hero-icon">event_note</span>
-            SIGEVEN
-        </h1>
-        <p>Sistema de Gestión de Eventos Universitarios - Escuela Militar de Ingeniería</p>
-    </section>
-
-    <main id="main" class="main-content">
-        <!-- Introduction -->
-        <div class="intro-section">
-            <h2>¿Qué es SIGEVEN?</h2>
-            <p>
-                SIGEVEN es una plataforma digital que centraliza la gestión de eventos académicos, culturales y deportivos 
-                en la EMI, facilitando la organización, participación y administración de actividades universitarias.
-            </p>
-        </div>
-
-        <!-- Features Grid -->
-        <div class="features-grid">
-            <!-- Ver Eventos -->
-            <div class="feature-card">
-                <span class="material-symbols-outlined feature-icon">calendar_view_month</span>
-                <h3>Ver Eventos</h3>
-                <p>Consulta todos los eventos académicos, culturales y deportivos disponibles en la universidad</p>
-                <div class="feature-highlight">
-                    <span class="material-symbols-outlined" style="font-size: 1rem;">check_circle</span>
-                    Calendario integrado
-                </div>
-            </div>
-
-            <!-- Registrarse a Eventos -->
-            <div class="feature-card">
-                <span class="material-symbols-outlined feature-icon">how_to_reg</span>
-                <h3>Registrarse a Eventos</h3>
-                <p>Inscríbete fácilmente a los eventos que te interesan y recibe confirmación instantánea</p>
-                <div class="feature-highlight">
-                    <span class="material-symbols-outlined" style="font-size: 1rem;">check_circle</span>
-                    Proceso rápido y sencillo
-                </div>
-            </div>
-
-            <!-- Crear Eventos -->
-            <div class="feature-card">
-                <span class="material-symbols-outlined feature-icon">add_circle</span>
-                <h3>Crear Eventos</h3>
-                <p>Organiza y propone nuevos eventos para la comunidad universitaria con herramientas fáciles de usar</p>
-                <div class="feature-highlight">
-                    <span class="material-symbols-outlined" style="font-size: 1rem;">check_circle</span>
-                    Gestión completa
-                </div>
-            </div>
-
-            <!-- Solicitar Espacios -->
-            <div class="feature-card">
-                <span class="material-symbols-outlined feature-icon">meeting_room</span>
-                <h3>Solicitar Espacios</h3>
-                <p>Reserva auditorios, salas y espacios físicos para tus eventos de manera coordinada</p>
-                <div class="feature-highlight">
-                    <span class="material-symbols-outlined" style="font-size: 1rem;">check_circle</span>
-                    Disponibilidad en tiempo real
-                </div>
-            </div>
-
-            <!-- Seguimiento y Notificaciones -->
-            <div class="feature-card">
-                <span class="material-symbols-outlined feature-icon">notifications_active</span>
-                <h3>Notificaciones</h3>
-                <p>Mantente informado con alertas sobre eventos, confirmaciones y cambios importantes</p>
-                <div class="feature-highlight">
-                    <span class="material-symbols-outlined" style="font-size: 1rem;">check_circle</span>
-                    Alertas en tiempo real
-                </div>
-            </div>
-
-            <!-- Reportes y Estadísticas -->
-            <div class="feature-card">
-                <span class="material-symbols-outlined feature-icon">assessment</span>
-                <h3>Reportes</h3>
-                <p>Accede a estadísticas y reportes detallados sobre participación y eventos realizados</p>
-                <div class="feature-highlight">
-                    <span class="material-symbols-outlined" style="font-size: 1rem;">check_circle</span>
-                    Datos en tiempo real
-                </div>
-            </div>
-        </div>
-
-        <!-- Call to Action -->
-        <div class="cta-section">
-            <h2 style="color: #163E8C; margin-bottom: 1rem;">¡Comienza a usar SIGEVEN hoy!</h2>
-            <p style="color: #666; font-size: 1.1rem;">Accede a tu cuenta o regístrate para disfrutar de todas las funcionalidades</p>
-            <div class="cta-buttons">
+    <main id="main">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <h1>
+                <span class="material-symbols-outlined hero-icon">event_note</span>
+                SIGEVEN
+            </h1>
+            <p>Sistema de Gestión de Eventos Universitarios - EMI</p>
+            <div>
                 <a href="login.php" class="btn-cta">
                     <span class="material-symbols-outlined">login</span>
                     Iniciar Sesión
@@ -369,6 +226,48 @@
                     <span class="material-symbols-outlined">person_add</span>
                     Registrarse
                 </a>
+            </div>
+        </section>
+
+        <!-- Features Grid -->
+        <div class="features-grid">
+            <!-- Students Card -->
+            <div class="feature-card">
+                <span class="material-symbols-outlined feature-icon">groups</span>
+                <h3>Para Estudiantes</h3>
+                <p>Accede a eventos universitarios de manera fácil y organizada</p>
+                <ul>
+                    <li><span class="material-symbols-outlined" style="font-size: 1rem; vertical-align: middle; color: #FED600;">check_circle</span> Consulta eventos académicos</li>
+                    <li><span class="material-symbols-outlined" style="font-size: 1rem; vertical-align: middle; color: #FED600;">check_circle</span> Registro a actividades</li>
+                    <li><span class="material-symbols-outlined" style="font-size: 1rem; vertical-align: middle; color: #FED600;">check_circle</span> Calendario integrado</li>
+                    <li><span class="material-symbols-outlined" style="font-size: 1rem; vertical-align: middle; color: #FED600;">check_circle</span> Notificaciones en tiempo real</li>
+                </ul>
+            </div>
+
+            <!-- Teachers Card -->
+            <div class="feature-card">
+                <span class="material-symbols-outlined feature-icon">school</span>
+                <h3>Para Docentes</h3>
+                <p>Gestiona y organiza eventos académicos de manera eficiente</p>
+                <ul>
+                    <li><span class="material-symbols-outlined" style="font-size: 1rem; vertical-align: middle; color: #FED600;">check_circle</span> Creación de eventos</li>
+                    <li><span class="material-symbols-outlined" style="font-size: 1rem; vertical-align: middle; color: #FED600;">check_circle</span> Gestión de participantes</li>
+                    <li><span class="material-symbols-outlined" style="font-size: 1rem; vertical-align: middle; color: #FED600;">check_circle</span> Seguimiento y reportes</li>
+                    <li><span class="material-symbols-outlined" style="font-size: 1rem; vertical-align: middle; color: #FED600;">check_circle</span> Comunicación directa</li>
+                </ul>
+            </div>
+
+            <!-- Admin Card -->
+            <div class="feature-card">
+                <span class="material-symbols-outlined feature-icon">admin_panel_settings</span>
+                <h3>Para Administrativos</h3>
+                <p>Control completo del sistema de gestión de eventos</p>
+                <ul>
+                    <li><span class="material-symbols-outlined" style="font-size: 1rem; vertical-align: middle; color: #FED600;">check_circle</span> Panel de control completo</li>
+                    <li><span class="material-symbols-outlined" style="font-size: 1rem; vertical-align: middle; color: #FED600;">check_circle</span> Gestión de usuarios</li>
+                    <li><span class="material-symbols-outlined" style="font-size: 1rem; vertical-align: middle; color: #FED600;">check_circle</span> Aprobación de eventos</li>
+                    <li><span class="material-symbols-outlined" style="font-size: 1rem; vertical-align: middle; color: #FED600;">check_circle</span> Estadísticas y reportes</li>
+                </ul>
             </div>
         </div>
     </main>
@@ -459,7 +358,7 @@
         <!-- Footer Bottom -->
         <div class="footer-bottom">
             <p><strong>2025 © Escuela Militar de Ingeniería</strong></p>
-            <p style="color: rgba(255,255,255,0.7);">Fecha de última actualización: 20/11/2025</p>
+            <p>Fecha de última actualización: 20/11/2025</p>
         </div>
     </footer>
 </body>
