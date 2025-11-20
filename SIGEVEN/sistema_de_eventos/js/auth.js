@@ -81,9 +81,9 @@ const Auth = {
     async register(userData) {
         try {
             // Validate required fields
-            const { nombre, correo, contrasena, codigo, tipo_usuario } = userData;
+            const { nombre, correo, contrasena, tipo_usuario } = userData;
             
-            if (!nombre || !correo || !contrasena || !codigo || !tipo_usuario) {
+            if (!nombre || !correo || !contrasena || !tipo_usuario) {
                 return {
                     success: false,
                     message: 'Todos los campos son obligatorios'
@@ -106,13 +106,23 @@ const Auth = {
                 };
             }
             
-            // Validate user code format
-            const codeValidation = this._validateUserCode(codigo, tipo_usuario);
-            if (!codeValidation.valid) {
-                return {
-                    success: false,
-                    message: codeValidation.message
-                };
+            // Validate user code format for institutional users (not for external)
+            if (tipo_usuario !== 'externo') {
+                const { codigo } = userData;
+                if (!codigo) {
+                    return {
+                        success: false,
+                        message: 'El código de usuario es obligatorio'
+                    };
+                }
+                
+                const codeValidation = this._validateUserCode(codigo, tipo_usuario);
+                if (!codeValidation.valid) {
+                    return {
+                        success: false,
+                        message: codeValidation.message
+                    };
+                }
             }
             
             // Call API

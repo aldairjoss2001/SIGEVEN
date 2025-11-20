@@ -133,27 +133,36 @@ const API = {
     _mockRegister(userData) {
         const { codigo, nombre, correo, tipo_usuario } = userData;
         
-        // Simulate validation
-        if (!codigo || !nombre || !correo) {
+        // Validate required fields
+        if (!nombre || !correo || !tipo_usuario) {
             return {
                 success: false,
                 message: 'Todos los campos son obligatorios'
             };
         }
         
-        // Validate code format
-        if (tipo_usuario === 'estudiante' && !/^E[0-9]{5}-[0-9]$/.test(codigo)) {
-            return {
-                success: false,
-                message: 'El formato del código de estudiante debe ser E00000-0'
-            };
-        }
-        
-        if (tipo_usuario === 'docente' && !/^A[0-9]{5}-[0-9]$/.test(codigo)) {
-            return {
-                success: false,
-                message: 'El formato del código de docente debe ser A00000-0'
-            };
+        // Validate code format for institutional users (not for external)
+        if (tipo_usuario !== 'externo') {
+            if (!codigo) {
+                return {
+                    success: false,
+                    message: 'El código de usuario es obligatorio'
+                };
+            }
+            
+            if (tipo_usuario === 'estudiante' && !/^E[0-9]{5}-[0-9]$/.test(codigo)) {
+                return {
+                    success: false,
+                    message: 'El formato del código de estudiante debe ser E00000-0'
+                };
+            }
+            
+            if (tipo_usuario === 'docente' && !/^A[0-9]{5}-[0-9]$/.test(codigo)) {
+                return {
+                    success: false,
+                    message: 'El formato del código de docente debe ser A00000-0'
+                };
+            }
         }
         
         // Simulate successful registration
@@ -162,7 +171,10 @@ const API = {
             message: 'Usuario registrado correctamente. Ya puedes iniciar sesión.',
             data: {
                 id: Math.floor(Math.random() * 1000),
-                tipo_usuario: tipo_usuario
+                tipo_usuario: tipo_usuario,
+                nombre: nombre,
+                correo: correo,
+                codigo: codigo || `EXT${Math.floor(Math.random() * 10000)}`
             }
         };
     },
