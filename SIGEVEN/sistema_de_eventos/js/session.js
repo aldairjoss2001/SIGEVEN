@@ -164,16 +164,16 @@ const Session = {
         if (currentPath.includes('sistema_de_eventos_admin')) {
             basePath = '../';
         } else if (currentPath.includes('sistema_de_eventos')) {
-            basePath = '../';
-        } else {
-            // We're in root
             basePath = '';
+        } else {
+            // We're in root, go into sistema_de_eventos
+            basePath = 'sistema_de_eventos/';
         }
         
         const profileUrls = {
-            estudiante: basePath + 'dashboard_estudiante.html',
-            docente: basePath + 'dashboard_docente.html',
-            admin: basePath + 'dashboard_admin.html'
+            estudiante: basePath + 'PerfilEstudiante.html',
+            docente: basePath + 'PerfilDocente.html',
+            admin: basePath ? '../dashboard_admin.html' : 'dashboard_admin.html'
         };
         
         const url = profileUrls[userType];
