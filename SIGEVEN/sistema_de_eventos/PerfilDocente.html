@@ -1183,8 +1183,11 @@
       // Protect page - require authentication
       Session.requireAuth('docente');
 
-      // Display user information
+      // Display user information and setup logout
       document.addEventListener('DOMContentLoaded', function() {
+        // Initialize User module (sets up logout links)
+        User.init();
+        
         const userData = Session.get();
         if (userData) {
           // Update teacher name if element exists

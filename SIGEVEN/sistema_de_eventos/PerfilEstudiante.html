@@ -713,8 +713,11 @@
     // Protect page - require authentication
     Session.requireAuth('estudiante');
 
-    // Display user information
+    // Display user information and setup logout
     document.addEventListener('DOMContentLoaded', function() {
+      // Initialize User module (sets up logout links)
+      User.init();
+      
       const userData = Session.get();
       if (userData) {
         // Update student name if element exists
