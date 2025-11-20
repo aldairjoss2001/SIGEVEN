@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estado de Solicitud | SIGEVEN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100vh;
+            background: #163E8C;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .sidebar-logo {
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar-logo img {
+            max-width: 120px;
+            height: auto;
+        }
+
+        .sidebar-menu {
+            padding: 1rem 0;
+        }
+
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s;
+            cursor: pointer;
+        }
+
+        .sidebar-item:hover {
+            background: rgba(254, 214, 0, 0.15);
+        }
+
+        .sidebar-item.active {
+            background: #FED600;
+            color: #163E8C;
+        }
+
+        .sidebar-item .material-symbols-outlined {
+            font-size: 24px;
+            margin-right: 12px;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 250px;
+            margin-top: 60px;
+            padding: 2rem;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            position: fixed;
+            left: 250px;
+            top: 0;
+            right: 0;
+            height: 60px;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            z-index: 999;
+        }
+
+        .top-bar input {
+            flex: 1;
+            max-width: 400px;
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Status Container */
+        .status-container {
+            max-width: 1000px;
+        }
+
+        .page-header {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .page-header h1 {
+            color: #163E8C;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header p {
+            color: #666;
+        }
+
+        .search-section {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .search-section h3 {
+            color: #163E8C;
+            margin-bottom: 1rem;
+        }
+
+        .search-form {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .search-form input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .search-form button {
+            padding: 0.75rem 2rem;
+            background: #163E8C;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .search-form button:hover {
+            background: #0f2d6b;
+        }
+
+        .status-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+        }
+
+        .status-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f5f7fa;
+        }
+
+        .status-header h3 {
+            color: #163E8C;
+            font-size: 1.5rem;
+        }
+
+        .status-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .status-badge.pendiente {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-badge.aprobada {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-badge.rechazada {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .status-detail {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: start;
+            gap: 0.5rem;
+        }
+
+        .detail-item .material-symbols-outlined {
+            color: #FED600;
+            font-size: 1.2rem;
+        }
+
+        .detail-item div {
+            flex: 1;
+        }
+
+        .detail-label {
+            color: #666;
+            font-size: 0.85rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .detail-value {
+            color: #163E8C;
+            font-weight: 600;
+        }
+
+        .timeline {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid #f5f7fa;
+        }
+
+        .timeline h4 {
+            color: #163E8C;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-left: 1rem;
+            border-left: 3px solid #e1e5e9;
+        }
+
+        .timeline-item.active {
+            border-left-color: #FED600;
+        }
+
+        .timeline-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #f5f7fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .timeline-item.active .timeline-icon {
+            background: #FED600;
+        }
+
+        .timeline-icon .material-symbols-outlined {
+            color: #163E8C;
+            font-size: 1.2rem;
+        }
+
+        .timeline-content h5 {
+            color: #163E8C;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-content p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .no-results {
+            background: white;
+            border-radius: 12px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .no-results .material-symbols-outlined {
+            font-size: 4rem;
+            color: #e1e5e9;
+            margin-bottom: 1rem;
+        }
+
+        .no-results h3 {
+            color: #163E8C;
+            margin-bottom: 0.5rem;
+        }
+
+        .no-results p {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <img src="assets/icons/logo.png" alt="Logo EMI">
+        </div>
+        <nav class="sidebar-menu">
+            <a href="PerfilEstudiante.html" class="sidebar-item">
+                <span class="material-symbols-outlined">home</span>
+                <span>INICIO</span>
+            </a>
+            <a href="solicitudesEstudiantes.html" class="sidebar-item active">
+                <span class="material-symbols-outlined">description</span>
+                <span>SOLICITUDES</span>
+            </a>
+            <a href="calendarioEstudiantes.html" class="sidebar-item">
+                <span class="material-symbols-outlined">calendar_month</span>
+                <span>CALENDARIO</span>
+            </a>
+            <a href="../logout.php" class="sidebar-item">
+                <span class="material-symbols-outlined">logout</span>
+                <span>SALIR</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <input type="text" placeholder="Buscar eventos...">
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="status-container">
+            <div class="page-header">
+                <h1><span class="material-symbols-outlined" style="vertical-align: middle; color: #FED600;">visibility</span> Estado de Solicitudes</h1>
+                <p>Consulta el estado de tus solicitudes de eventos</p>
+            </div>
+
+            <div class="search-section">
+                <h3>Buscar Solicitud</h3>
+                <div class="search-form">
+                    <input type="text" id="searchCode" placeholder="Ingresa el código de tu solicitud o nombre del evento">
+                    <button onclick="searchSolicitud()">
+                        <span class="material-symbols-outlined">search</span>
+                        Buscar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sample Status Cards -->
+            <div class="status-card">
+                <div class="status-header">
+                    <h3>Seminario de Inteligencia Artificial</h3>
+                    <span class="status-badge pendiente">
+                        <span class="material-symbols-outlined" style="font-size: 1rem;">hourglass_empty</span>
+                        Pendiente
+                    </span>
+                </div>
+
+                <div class="status-detail">
+                    <div class="detail-item">
+                        <span class="material-symbols-outlined">confirmation_number</span>
+                        <div>
+                            <div class="detail-label">Código de Solicitud</div>
+                            <div class="detail-value">SOL-2025-001</div>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="material-symbols-outlined">event</span>
+                        <div>
+                            <div class="detail-label">Fecha del Evento</div>
+                            <div class="detail-value">25 de Noviembre, 2025</div>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="material-symbols-outlined">location_on</span>
+                        <div>
+                            <div class="detail-label">Ubicación</div>
+                            <div class="detail-value">Auditorio Principal</div>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="material-symbols-outlined">schedule</span>
+                        <div>
+                            <div class="detail-label">Fecha de Solicitud</div>
+                            <div class="detail-value">hace 2 días</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline">
+                    <h4>Progreso de la Solicitud</h4>
+                    <div class="timeline-item active">
+                        <div class="timeline-icon">
+                            <span class="material-symbols-outlined">check_circle</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h5>Solicitud Enviada</h5>
+                            <p>Tu solicitud ha sido recibida correctamente</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item active">
+                        <div class="timeline-icon">
+                            <span class="material-symbols-outlined">pending</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h5>En Revisión</h5>
+                            <p>La administración está revisando tu solicitud</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <span class="material-symbols-outlined">task_alt</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h5>Aprobación</h5>
+                            <p>Pendiente de confirmación final</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <span class="material-symbols-outlined">notifications</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h5>Notificación</h5>
+                            <p>Recibirás un correo con la confirmación</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="status-card">
+                <div class="status-header">
+                    <h3>Festival Cultural EMI</h3>
+                    <span class="status-badge aprobada">
+                        <span class="material-symbols-outlined" style="font-size: 1rem;">check_circle</span>
+                        Aprobada
+                    </span>
+                </div>
+
+                <div class="status-detail">
+                    <div class="detail-item">
+                        <span class="material-symbols-outlined">confirmation_number</span>
+                        <div>
+                            <div class="detail-label">Código de Solicitud</div>
+                            <div class="detail-value">SOL-2025-002</div>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="material-symbols-outlined">event</span>
+                        <div>
+                            <div class="detail-label">Fecha del Evento</div>
+                            <div class="detail-value">28 de Noviembre, 2025</div>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="material-symbols-outlined">location_on</span>
+                        <div>
+                            <div class="detail-label">Ubicación</div>
+                            <div class="detail-value">Plaza Central</div>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="material-symbols-outlined">schedule</span>
+                        <div>
+                            <div class="detail-label">Aprobada hace</div>
+                            <div class="detail-value">1 día</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline">
+                    <h4>Progreso de la Solicitud</h4>
+                    <div class="timeline-item active">
+                        <div class="timeline-icon">
+                            <span class="material-symbols-outlined">check_circle</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h5>Solicitud Enviada</h5>
+                            <p>Tu solicitud ha sido recibida correctamente</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item active">
+                        <div class="timeline-icon">
+                            <span class="material-symbols-outlined">pending</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h5>Revisada</h5>
+                            <p>La administración ha revisado tu solicitud</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item active">
+                        <div class="timeline-icon">
+                            <span class="material-symbols-outlined">task_alt</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h5>Aprobada</h5>
+                            <p>¡Tu solicitud ha sido aprobada!</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item active">
+                        <div class="timeline-icon">
+                            <span class="material-symbols-outlined">notifications</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h5>Notificación Enviada</h5>
+                            <p>Revisa tu correo electrónico</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="status-card">
+                <div class="status-header">
+                    <h3>Torneo de Fútbol Interfacultades</h3>
+                    <span class="status-badge rechazada">
+                        <span class="material-symbols-outlined" style="font-size: 1rem;">cancel</span>
+                        Rechazada
+                    </span>
+                </div>
+
+                <div class="status-detail">
+                    <div class="detail-item">
+                        <span class="material-symbols-outlined">confirmation_number</span>
+                        <div>
+                            <div class="detail-label">Código de Solicitud</div>
+                            <div class="detail-value">SOL-2025-003</div>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="material-symbols-outlined">event</span>
+                        <div>
+                            <div class="detail-label">Fecha del Evento</div>
+                            <div class="detail-value">30 de Noviembre, 2025</div>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="material-symbols-outlined">info</span>
+                        <div>
+                            <div class="detail-label">Motivo</div>
+                            <div class="detail-value">Cupo completo</div>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="material-symbols-outlined">schedule</span>
+                        <div>
+                            <div class="detail-label">Rechazada hace</div>
+                            <div class="detail-value">3 días</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function searchSolicitud() {
+            const searchTerm = document.getElementById('searchCode').value.toLowerCase();
+            const cards = document.querySelectorAll('.status-card');
+            let found = false;
+
+            cards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const code = card.querySelector('.detail-value').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || code.includes(searchTerm) || searchTerm === '') {
+                    card.style.display = 'block';
+                    found = true;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            if (!found && searchTerm !== '') {
+                alert('No se encontraron solicitudes con ese criterio de búsqueda.');
+            }
+        }
+
+        // Allow enter key to search
+        document.getElementById('searchCode').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchSolicitud();
+            }
+        });
+    </script>
+</body>
+</html>

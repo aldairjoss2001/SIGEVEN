@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nueva Solicitud | SIGEVEN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100vh;
+            background: #163E8C;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .sidebar-logo {
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar-logo img {
+            max-width: 120px;
+            height: auto;
+        }
+
+        .sidebar-menu {
+            padding: 1rem 0;
+        }
+
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s;
+            cursor: pointer;
+        }
+
+        .sidebar-item:hover {
+            background: rgba(254, 214, 0, 0.15);
+        }
+
+        .sidebar-item.active {
+            background: #FED600;
+            color: #163E8C;
+        }
+
+        .sidebar-item .material-symbols-outlined {
+            font-size: 24px;
+            margin-right: 12px;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 250px;
+            margin-top: 60px;
+            padding: 2rem;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            position: fixed;
+            left: 250px;
+            top: 0;
+            right: 0;
+            height: 60px;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            z-index: 999;
+        }
+
+        .top-bar input {
+            flex: 1;
+            max-width: 400px;
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Form Styles */
+        .form-container {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-width: 800px;
+        }
+
+        .form-header {
+            margin-bottom: 2rem;
+        }
+
+        .form-header h1 {
+            color: #163E8C;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-header p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #163E8C;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #163E8C;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-hint {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 0.25rem;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 0.875rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: #163E8C;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #0f2d6b;
+        }
+
+        .btn-secondary {
+            background: #f5f7fa;
+            color: #163E8C;
+            border: 2px solid #163E8C;
+        }
+
+        .btn-secondary:hover {
+            background: #e8edf2;
+        }
+
+        .event-search {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .event-search h3 {
+            color: #163E8C;
+            margin-bottom: 1rem;
+        }
+
+        .event-card {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 2px solid #e1e5e9;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .event-card:hover {
+            border-color: #FED600;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .event-card.selected {
+            border-color: #163E8C;
+            background: #f0f4ff;
+        }
+
+        .event-card h4 {
+            color: #163E8C;
+            margin-bottom: 0.5rem;
+        }
+
+        .event-card p {
+            color: #666;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <img src="assets/icons/logo.png" alt="Logo EMI">
+        </div>
+        <nav class="sidebar-menu">
+            <a href="PerfilEstudiante.html" class="sidebar-item">
+                <span class="material-symbols-outlined">home</span>
+                <span>INICIO</span>
+            </a>
+            <a href="solicitudesEstudiantes.html" class="sidebar-item active">
+                <span class="material-symbols-outlined">description</span>
+                <span>SOLICITUDES</span>
+            </a>
+            <a href="calendarioEstudiantes.html" class="sidebar-item">
+                <span class="material-symbols-outlined">calendar_month</span>
+                <span>CALENDARIO</span>
+            </a>
+            <a href="../logout.php" class="sidebar-item">
+                <span class="material-symbols-outlined">logout</span>
+                <span>SALIR</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <input type="text" id="searchInput" placeholder="Buscar eventos...">
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="form-container">
+            <div class="form-header">
+                <h1><span class="material-symbols-outlined" style="vertical-align: middle; color: #FED600;">add_circle</span> Nueva Solicitud de Evento</h1>
+                <p>Selecciona un evento y completa tus datos para enviar tu solicitud</p>
+            </div>
+
+            <!-- Event Search Section -->
+            <div class="event-search">
+                <h3><span class="material-symbols-outlined" style="vertical-align: middle; font-size: 1.2rem;">search</span> Buscar Evento</h3>
+                <div class="form-group">
+                    <input type="text" id="eventSearch" placeholder="Buscar por nombre del evento...">
+                </div>
+
+                <!-- Sample Events -->
+                <div class="event-card" onclick="selectEvent(this, 'Seminario de Inteligencia Artificial')">
+                    <h4>Seminario de Inteligencia Artificial</h4>
+                    <p><span class="material-symbols-outlined" style="font-size: 1rem;">event</span> 25 de Noviembre, 2025</p>
+                    <p><span class="material-symbols-outlined" style="font-size: 1rem;">location_on</span> Auditorio Principal</p>
+                    <p><span class="material-symbols-outlined" style="font-size: 1rem;">category</span> Académico</p>
+                </div>
+
+                <div class="event-card" onclick="selectEvent(this, 'Festival Cultural EMI')">
+                    <h4>Festival Cultural EMI</h4>
+                    <p><span class="material-symbols-outlined" style="font-size: 1rem;">event</span> 28 de Noviembre, 2025</p>
+                    <p><span class="material-symbols-outlined" style="font-size: 1rem;">location_on</span> Plaza Central</p>
+                    <p><span class="material-symbols-outlined" style="font-size: 1rem;">category</span> Cultural</p>
+                </div>
+
+                <div class="event-card" onclick="selectEvent(this, 'Torneo de Fútbol Interfacultades')">
+                    <h4>Torneo de Fútbol Interfacultades</h4>
+                    <p><span class="material-symbols-outlined" style="font-size: 1rem;">event</span> 30 de Noviembre, 2025</p>
+                    <p><span class="material-symbols-outlined" style="font-size: 1rem;">location_on</span> Cancha Deportiva</p>
+                    <p><span class="material-symbols-outlined" style="font-size: 1rem;">category</span> Deportivo</p>
+                </div>
+            </div>
+
+            <!-- Registration Form -->
+            <form id="solicitudForm">
+                <input type="hidden" id="selectedEvent" name="evento">
+
+                <div class="form-group">
+                    <label>Evento Seleccionado</label>
+                    <input type="text" id="eventoDisplay" readonly placeholder="Selecciona un evento arriba">
+                </div>
+
+                <div class="form-group">
+                    <label>Nombre Completo *</label>
+                    <input type="text" name="nombre" required placeholder="Tu nombre completo">
+                </div>
+
+                <div class="form-group">
+                    <label>Correo Electrónico *</label>
+                    <input type="email" name="email" required placeholder="tu.email@emi.edu.bo">
+                </div>
+
+                <div class="form-group">
+                    <label>Código de Estudiante *</label>
+                    <input type="text" name="codigo" required placeholder="Ej: 202012345">
+                </div>
+
+                <div class="form-group">
+                    <label>Carrera *</label>
+                    <select name="carrera" required>
+                        <option value="">Seleccione una carrera</option>
+                        <option value="sistemas">Ingeniería de Sistemas</option>
+                        <option value="civil">Ingeniería Civil</option>
+                        <option value="electronica">Ingeniería Electrónica</option>
+                        <option value="industrial">Ingeniería Industrial</option>
+                        <option value="petrolera">Ingeniería Petrolera</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Motivo de Participación</label>
+                    <textarea name="motivo" placeholder="¿Por qué deseas participar en este evento?"></textarea>
+                    <span class="form-hint">Opcional: Explica brevemente tu interés en el evento</span>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        <span class="material-symbols-outlined">send</span>
+                        Enviar Solicitud
+                    </button>
+                    <a href="solicitudesEstudiantes.html" class="btn btn-secondary">
+                        <span class="material-symbols-outlined">cancel</span>
+                        Cancelar
+                    </a>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script src="js/notifications.js"></script>
+    <script>
+        function selectEvent(card, eventName) {
+            // Remove selected class from all cards
+            document.querySelectorAll('.event-card').forEach(c => c.classList.remove('selected'));
+            // Add selected class to clicked card
+            card.classList.add('selected');
+            // Update hidden and display fields
+            document.getElementById('selectedEvent').value = eventName;
+            document.getElementById('eventoDisplay').value = eventName;
+        }
+
+        document.getElementById('solicitudForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const selectedEvent = document.getElementById('selectedEvent').value;
+            if (!selectedEvent) {
+                showNotification('error', 'Error', 'Por favor selecciona un evento antes de enviar la solicitud');
+                return;
+            }
+
+            // Show success notification
+            showNotification('success', 'Solicitud Enviada', 'Tu solicitud ha sido enviada correctamente. Recibirás una confirmación por correo electrónico.', 
+                () => {
+                    window.location.href = 'solicitudesEstudiantes.html';
+                }
+            );
+        });
+
+        // Event search functionality
+        document.getElementById('eventSearch').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            document.querySelectorAll('.event-card').forEach(card => {
+                const title = card.querySelector('h4').textContent.toLowerCase();
+                if (title.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
