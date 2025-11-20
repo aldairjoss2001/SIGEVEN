@@ -156,10 +156,24 @@ const Session = {
      * @param {string} userType - User type
      */
     redirectToProfile(userType) {
+        // Determine current location to build correct path
+        const currentPath = window.location.pathname;
+        let basePath = '';
+        
+        // Check if we're in sistema_de_eventos or sistema_de_eventos_admin or root
+        if (currentPath.includes('sistema_de_eventos_admin')) {
+            basePath = '';
+        } else if (currentPath.includes('sistema_de_eventos')) {
+            basePath = '';
+        } else {
+            // We're in root, go into sistema_de_eventos
+            basePath = 'sistema_de_eventos/';
+        }
+        
         const profileUrls = {
-            estudiante: 'PerfilEstudiante.html',
-            docente: 'PerfilDocente.html',
-            admin: '../sistema_de_eventos_admin/index.html'
+            estudiante: basePath + 'PerfilEstudiante.html',
+            docente: basePath + 'PerfilDocente.html',
+            admin: basePath ? 'sistema_de_eventos_admin/index.html' : '../sistema_de_eventos_admin/index.html'
         };
         
         const url = profileUrls[userType];
