@@ -13,6 +13,7 @@
   <script src="js/session.js"></script>
   <script src="js/auth.js"></script>
   <script src="js/user.js"></script>
+  <script src="js/notifications.js"></script>
 </head>
 <body>
   <!-- Vertical Sidebar Navigation -->
@@ -166,6 +167,10 @@
                 <span class="capacity">Capacidad: 80 personas</span>
               </div>
               <div class="event-actions">
+                <button class="btn btn-primary" onclick="verDetallesEvento(1)">
+                  <span class="material-symbols-outlined">visibility</span>
+                  Ver Detalles
+                </button>
                 <button class="btn btn-confirm" onclick="confirmarAsistencia(1)">
                   <span class="material-symbols-outlined">check_circle</span>
                   Confirmar Asistencia
@@ -632,6 +637,36 @@
         toast.classList.remove('show');
       }, 3000);
     }
+
+    // Función para mostrar detalles del evento
+    function verDetallesEvento(eventId) {
+      const event = eventsData[eventId];
+      if (!event) return;
+      
+      showEventDetailsModal({
+        id: event.id,
+        title: event.title,
+        date: event.date,
+        time: '18:00',
+        location: event.location,
+        description: event.description,
+        organizer: 'Docente: Dr. Carlos Mendoza',
+        attendees: event.attendees,
+        capacity: event.capacity,
+        image: `assets/images/${event.id === 1 ? 'ctf' : event.id === 2 ? 'arborizacion' : 'deeptech'}.jpeg`,
+        canRegister: !event.confirmed
+      });
+    }
+
+    // Función global para confirmar asistencia desde el modal
+    window.confirmarAsistenciaEvento = function(eventId) {
+      // Cerrar el modal
+      const modals = document.querySelectorAll('#notification-modal-container > div');
+      modals.forEach(modal => modal.remove());
+      
+      // Confirmar asistencia
+      confirmarAsistencia(parseInt(eventId));
+    };
 
   </script>
 

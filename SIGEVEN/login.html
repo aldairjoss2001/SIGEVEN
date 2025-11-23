@@ -50,14 +50,25 @@
                     
                     <div class="form-group">
                         <label for="password">Contraseña</label>
-                        <input 
-                            type="password" 
-                            id="password" 
-                            name="password" 
-                            placeholder="Ingrese su contraseña"
-                            required
-                            autocomplete="current-password"
-                        >
+                        <div style="position: relative;">
+                            <input 
+                                type="password" 
+                                id="password" 
+                                name="password" 
+                                placeholder="Ingrese su contraseña"
+                                required
+                                autocomplete="current-password"
+                                style="padding-right: 45px;"
+                            >
+                            <button 
+                                type="button" 
+                                id="togglePassword" 
+                                style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: #163E8C; padding: 5px;"
+                                aria-label="Mostrar/ocultar contraseña"
+                            >
+                                <span class="material-symbols-outlined" id="passwordIcon">visibility</span>
+                            </button>
+                        </div>
                     </div>
                     
                     <button type="submit" class="btn-auth primary-btn">
@@ -96,6 +107,20 @@
             const userType = Session.getUserType();
             Session.redirectToProfile(userType);
         }
+
+        // Password visibility toggle
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            const passwordField = document.getElementById('password');
+            const passwordIcon = document.getElementById('passwordIcon');
+            
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                passwordIcon.textContent = 'visibility_off';
+            } else {
+                passwordField.type = 'password';
+                passwordIcon.textContent = 'visibility';
+            }
+        });
 
         // Detect user type based on input format
         function detectUserType(username) {
